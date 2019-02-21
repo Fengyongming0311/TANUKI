@@ -1,0 +1,7 @@
+#coding:utf-8
+# 简单粗暴的下载
+import requests
+
+res=requests.get(u'http://www.halessnotato.com/uc3qVNIzmpg2ORujngwAVKuepCHmugUCTT9xa+X7LCjz+S9H1LwVWowF7_IR+DRjh7qhMZ3vxpnpQmv+h5wTD03JyiLtSd0f3XEtVw6HxgzMQgPsKtsyExaI9oDuDZOecnZsDqK+uMlY4Fv+hkhB4z7SfRO7GtHcHwpBoj5BP9LGhc1fam1MB_7zr1av5c4NWbcw7SnKqnDs55zgQqFDUue_kUhu+ZT8UWy5m4dibVZ11h1fuiRA_lO+kcJMGsNBG3FpiCczj3YdFSkTWRsfUEOxenKrcL80EoIUTiCzC8XgcbboxMjPAJt0ugOhynr3IN9JiRH58rDJLRLrfXYcuyBi1xUBSOYmUqJAwCenErUWjoGQGe1aLOFLKiip7eG7GPkzH2LE19Pezjc0hcZwAVFYWHf+cCdXzP+p9jiXTWSiucs2QAqgL2LWqiKIB54AVrBwbk0T-GzgAAERveH7OV9GKQ5QpsAEHbqUDD7gOG2PId3WCRg1yLkHTiyW9C1yFhugyN4IH')
+with open('bit.exe','w') as f:
+    f.write(res.content)

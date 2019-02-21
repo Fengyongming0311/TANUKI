@@ -1,0 +1,24 @@
+CMD中创建项目（dondake为项目名区分大小写）
+scrapy startproject Dondake
+
+CMD 启动项目
+scrapy crawl Dondake
+
+
+
+cd C:\TANUKI\Little_Project\018.Scrapy\SunShine
+
+scrapy crawl SunShine
+
+
+cd C:\TANUKI\Little_Project\018.Scrapy\MeiZiPic
+
+scrapy crawl MeiZiPic
+
+文档保存在此文档相同目录下
+
+# coding=utf-8
+
+from scrapy import cmdline
+
+cmdline.execute(['scrapy', 'crawl', 'SunShine'])
