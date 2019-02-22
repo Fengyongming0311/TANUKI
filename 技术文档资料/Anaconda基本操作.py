@@ -1,4 +1,4 @@
-查看API文档
+﻿查看API文档
 
 python -m pydoc -p 4895
 
@@ -134,6 +134,7 @@ conda config --show
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --set show_channel_urls yes
+
 
 
 
