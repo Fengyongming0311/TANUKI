@@ -1,0 +1,33 @@
+切换到最高权限
+su root 
+
+想找哪个程序（git python）安装在哪里
+which python
+which git
+
+关闭防火墙
+systemctl stop firewalld # 临时关闭防火墙
+systemctl disable firewalld # 禁止开机启动
+
+重启网络服务
+service network restart
+
+
+删除centos7中自带有python2.7
+（1）强制删除已安装python及其关联
+# rpm -qa|grep python|xargs rpm -ev --allmatches --nodeps
+（2）删除残余文件
+# whereis python|xargs rm -frv
+ （3）验证删除，返回无结果正确
+# whereis python ##验证删除，返回无结果
+
+显示当前路径：pwd
+
+
+
+lunix或者centos服务器下如何下载自己在github上面的项目代码
+使用cd命令进入到所需下载到的文件夹，使用 wget+下载地址，输入wget https://www.github.com/username/archive/project-master.zip回车就会开始下载了，
+
+---解压我们的项目代码
+
+等待下载完成之后，使用unzip project-master.zip -d 加上需要解压到的路径就可以解压了，路径可以是相对路径或者绝对路径。
