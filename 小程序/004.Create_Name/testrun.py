@@ -7,4 +7,4 @@ fi.writelines(don)
 fi.close()
 '''
 
-name.run(100)
+name.run(5400)

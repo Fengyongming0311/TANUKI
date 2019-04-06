@@ -48,7 +48,8 @@ def firstname():
 		pass
 
 def run(_cishu):
-	xing = firstname()
+	#xing = firstname()
+	xing = "莫"
 	ming = random.sample(lastname(), _cishu)
 
 	for loop in range(_cishu):

@@ -26,7 +26,7 @@ from FilePublic_Page import Public_Page
 shouji = testphone.testphone()
 #读取被测的手机型号
 driver = webdriver.Remote('http://localhost:4723/wd/hub', shouji)
-
+#driver.implicitly_wait(60)
 
 
 
@@ -39,3 +39,20 @@ allbutn = driver.find_elements_by_id("com.pujitech.pujiejia:id/fixed_bottom_navi
 for target in allbutn:
     if target.text == "我家":
         target.click()
+
+
+
+
+'''
+time.sleep(2)
+print ("等待2秒结束")
+driver.find_element_by_xpath("//*[@name=\"餐饮美食\"]").click()
+time.sleep(3)
+driver.back()
+
+
+time.sleep(2)
+driver.find_element_by_ios_predicate("type == 'XCUIElementTypeButton' AND name == '生活购'").click()
+time.sleep(2)
+driver.find_element_by_ios_predicate("type == 'Button' AND name == '我家'").click()
+'''
