@@ -88,6 +88,7 @@ class Loginin:
         time.sleep(3)
         try:
             userphone = driver.find_element_by_id('com.pujitech.pujiejia:id/tv_user_center_phone')
+            #如果未登录状态为空直接进入异常
             if not userphone.text == str(username):
                 Public_Page.Dengchu(driver)
                 Loginin.Loginin_nomal(driver, username, password)

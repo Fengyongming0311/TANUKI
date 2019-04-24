@@ -26,6 +26,21 @@ from FilePublic_Page import Public_Page
 shouji = testphone.testphone()
 #读取被测的手机型号
 driver = webdriver.Remote('http://localhost:4723/wd/hub', shouji)
+
+
+
+
+
+
+
+Public_Page.Switch_Navigation(driver, "我家")
+#已经进入楼盘，未登录状态，先进入我家
+Loginin.Loginin_nomal(driver, 13263160105, "00000000")
+#然后进行登录
+
+
+
+
 '''
 Loginin.OnceInto(driver)
 Loginin.OnceIntoLogin(driver)
@@ -33,19 +48,19 @@ Loginin.OnceChoiceBuilding(driver, Building = "哈奇内部测试")
 #case:测试第一次登录
 ############################################################
 
-#Loginin.Loginin_nomal(driver, 13263160105, "00000000")
+#
 #普通账号登录
 #Loginin.Loginin_Switch_ID(driver, username = 13466738904, password = "00000000")
 ShiDiPai.IntoShiDiPai(driver)
 ShiDiPai.Building_Name_Container(driver)
 Public_Page.ChoiceBuilding(driver, Building = "哈奇内部测试")
 #case:切换账号并切换到哈其内部测试楼盘下
-'''
+
 
 #测试平时登录账户(在已有楼盘下账户未登录状态)
 
 ShiDiPai.IntoShiDiPai(driver)
-'''
+
 ShiDiPai.RecommendApp(driver)
 ShiDiPai.Brand_Image(driver)
 ShiDiPai.ZunXiangFuWu(driver)

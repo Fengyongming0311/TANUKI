@@ -218,9 +218,9 @@ def main():
 			sheet1.write(num, 7, don[7], style)  # 是否早退
 			sheet1.write(num, 8, don[8], style)  # 上班时长
 
-			#暂时关闭计数
-			#print (num)
-			#暂时关闭计数
+			#打开计数
+			print (num)
+			#打开计数
 
 			
 			num = num + 1
