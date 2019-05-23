@@ -15,26 +15,25 @@ class Public_Page:
         用户登录页面
         '''
         try:
-            try:
-                driver.wait_activity(".modules.login.views.activities.LoginActivity", 30)
-                time.sleep(2)
-            except:
-                time.sleep(3)
-                pass
-
-            driver.find_element_by_id("com.pujitech.pujiejia:id/et_login_username").send_keys(username)
-            # 输入用户名
-            # com.pujitech.pujiejia:id/et_login_username
+            time.sleep(3)
+            driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_phone_edt").clear()
+            #先清一下文本
+            driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_phone_edt").send_keys(username)
+            #输入用户名
+            #com.pujitech.pujiejia:id/et_login_username
+            #2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_phone_edt
 
             time.sleep(1)
-            driver.find_element_by_id("com.pujitech.pujiejia:id/et_login_password").send_keys(password)
-            # 输入密码
-            # com.pujitech.pujiejia:id/et_login_password
+            driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_password_edt").send_keys(password)
+            #输入密码
+            #com.pujitech.pujiejia:id/et_login_password
+            #2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_password_edt
 
             time.sleep(1)
-            driver.find_element_by_id("com.pujitech.pujiejia:id/btn_login").click()
-            # com.pujitech.pujiejia:id/btn_login
-            # 点击立即登录
+            driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_perform_btn").click()
+            #com.pujitech.pujiejia:id/btn_login
+            #2019.4.24发现改为com.pujitech.pujiejia:id/login_password_perform_btn
+            #点击立即登录
 
             denglu = True
             return denglu

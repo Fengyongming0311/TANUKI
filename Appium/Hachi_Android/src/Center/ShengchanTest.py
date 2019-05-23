@@ -37,8 +37,8 @@ Public_Page.Switch_Navigation(driver, "我家")
 #已经进入楼盘，未登录状态，先进入我家
 Loginin.Loginin_nomal(driver, 13263160105, "00000000")
 #然后进行登录
-
-
+Public_Page.Switch_Navigation(driver, "实地派")
+#切换到实地派首页
 
 
 '''
