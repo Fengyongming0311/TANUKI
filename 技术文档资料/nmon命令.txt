@@ -1,0 +1,25 @@
+开始监控命令
+
+./nmon_x86_64_centos7 -s 1 -c 600 -F wyhqbjdd200.nmon
+
+
+./nmon_x86_64_centos7 -s 1 -c 740 -F wyhqbjdd250T.nmon
+
+
+./nmon_x86_64_centos7 -s 1 -c 30600 -F pilao_200.nmon
+8.5hour
+
+查看执行中的命令
+ps -ef|grep nmon
+
+
+杀进程
+kill -9 端口号
+ 
+
+linux下删除文件夹的命令
+
+rm -rf 
+
+
+
