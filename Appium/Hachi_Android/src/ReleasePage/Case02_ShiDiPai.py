@@ -57,11 +57,12 @@ class ShiDiPai:
 
     def Brand_Image(driver):
         """
-        点击商标图片——实地派会员专享权益
+        点击商标图片——实地派会员专享权益（品牌宣传位）
         :return: None
         """
         time.sleep(2)
-        case = "实地派会员专享权益"
+        #case = "实地派会员专享权益"
+        case = "保洁"
         try:
             driver.find_element_by_id('com.pujitech.pujiejia:id/iv_brand_image').click()
             time.sleep(5)
@@ -201,6 +202,28 @@ class ShiDiPai:
             pass
 
     def ZunXiangFuWu(driver):
+        case = "尊享服务"
+        #内测的尊享服务现在点进去是度小月商家首页
+        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_topic_row11").click()
+        time.sleep(3)
+        #已经进去了   度小月 xpath定位不到，以后可以加个截图或者尝试定位xpath
+        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+
+        '''
+        doit = '//com.tencent.tbs.core.webkit.WebView/android.view.View/android.view.View[5]'
+        driver.find_element_by_xpath(doit).click()
+        print ("dondake")
+        '''
+
+        time.sleep(3)
+        a = driver.find_element_by_id("com.pujitech.pujiejia:id/ll_topic_root")
+        time.sleep(3)
+        a.find_element_by_xpath("//android.widget.RelativeLayout[2]").click()
+        time.sleep(3)
+        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+        print("测试点击%s用例Passed............成功" % case)
+
+    def ZunXiangFuWu0(driver):
         # (1)测试尊享服务中智能家居是否可以进入
         time.sleep(2)
         case = "智能家居"
@@ -318,12 +341,15 @@ class ShiDiPai:
         实地派页面中的文字推荐楼盘，目前有无锡玫瑰庄园、惠州常春藤、广州蔷薇国际
         :return: None
         """
-        tuijianbuild = ["无锡玫瑰庄园", "惠州常春藤", "广州蔷薇国际"]
+        tuijianbuild = ["广州常春藤", "广州蔷薇国际", "惠州常春藤", "武汉君兰汀岸", "天津海棠雅著"]
         # print ("点击进入各个推荐楼盘点击进入各个推荐楼盘")
         try:
             for case in tuijianbuild:
+                print ("这次楼盘名称是：", case)
+                time.sleep(2)
                 lpan = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_community_name")
                 for target in lpan:
+                    print("定位元素========：", target.text)
                     if target.text == case:
                         target.click()
                         ShiDiPai.tuijianloupan(driver, case)
@@ -407,16 +433,16 @@ class ShiDiPai:
         全部应用（如果有改动改这里）
         还有更多的话也可以作为普通页面点击
         ["餐饮美食", "社区商城", "服务预定", "课程培训",
-        "限时促销", "精品团购",
-        "社区公告", "房屋报修", "物业缴费", "投诉建议",
-        "精品楼盘", "专享活动", "投资理财", u"智能手环", u"手机开门", u"消费分期", u"智能家居", u"哈奇贝壳",
+        "精品团购", "限时促销", "家政服务",
+        "社区公告", "物业缴费", "报事报修", u"智能家居", u"智能手环",
+        "专享活动", "精品楼盘", "人脸识别", u"手机开门", "投诉建议",
         "更多"]
 
-        其中["投诉建议", "房屋报修"] 点击后判断是否为业主
-        哈奇贝壳怎么是空白页
+        其中["报事报修", "手机开门"]点击后判断是否为业主
         """
-        application = ["餐饮美食", "社区商城", "服务预定", "课程培训","限时促销", "精品团购",
-                  "社区公告", "物业缴费","精品楼盘", "专享活动", "投资理财","更多", u"消费分期"]
+        application = ["餐饮美食", "社区商城", "服务预定", "课程培训", "精品团购", "限时促销", "家政服务",
+                       "社区公告", "物业缴费", "专享活动", "精品楼盘",
+                       "人脸识别", "投诉建议", "更多"]
         time.sleep(3)
         if case in application:
             try:
@@ -425,28 +451,36 @@ class ShiDiPai:
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_title")
                 if checkpoint.text == case or checkpoint.text == "握手分期"\
-                    or checkpoint.text == "握手金融":
+                    or checkpoint.text == "握手金融" or checkpoint.text == "保洁":
+                    #已经没有握手分期和握手金融了
                     driver.back()
                 else:
                     print ("标题为%s...不在应用列表中，请重新确认标题名称。"%checkpoint.text)
                     driver.back()
                 print("测试点击%s用例Passed............成功"%case)
+                time.sleep(2)
             except:
                 print("测试点击%s用例失败............Failed"%case)
                 time.sleep(2)
                 pass
-        elif case == "投诉建议" or case == "房屋报修" or case == u"手机开门":
+        elif case == "报事报修" or case == u"手机开门":
+            #判断是否在楼盘下有房
             try:
                 driver.find_element_by_android_uiautomator('new UiSelector().text("%s")'%case).click()
-                time.sleep(8)
+                time.sleep(5)
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_content")
+                #print ("查看非业主的checkpoint内容===================为",checkpoint)
                 if checkpoint.text == "您没有在该小区认证房间":
                     print("点击%s后提示："%case, checkpoint.text)
                     driver.find_element_by_id("com.pujitech.pujiejia:id/tv_cancel").click()
                     print("测试点击%s用例Passed............成功" % case)
                 else:
-                    Public_Page.ExitBack(driver)
+                    time.sleep(5)
+                    try:
+                        Public_Page.ExitBack(driver)
+                    except:
+                        driver.back()
                     print("测试点击%s用例Passed............成功" % case)
 
 
@@ -461,7 +495,10 @@ class ShiDiPai:
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_base_title")
                 if checkpoint.text == "我的网关":
-                    driver.back()
+                    try:
+                        driver.find_element_by_id('com.pujitech.pujiejia:id/iv_icon_back').click()
+                    except:
+                        driver.back()
                 else:
                     print("标题为%s...不在应用列表中，请重新确认标题名称。"%checkpoint.text)
                     driver.back()
@@ -477,7 +514,9 @@ class ShiDiPai:
                 #点击手环进入我家页面，暂时判断页面是否有全部应用元素
                 ##################以后优化，每隔1秒执行一次循环，然后直到找到元素，退出整体循环
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/all_application_tv")
+                print (checkpoint.text)
                 if checkpoint.text == "全部应用":
+                    #改成简单的方法
                     retap = "实地派"
                     try:
                         driver.wait_activity(".modules.main.views.activities.MainActivity", 30)

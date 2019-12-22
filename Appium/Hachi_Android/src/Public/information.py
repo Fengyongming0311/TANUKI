@@ -21,6 +21,9 @@ def VIVO_X9():
     desired_caps['appActivity'] = 'com.pujitech.pujiejia.modules.splash.views.activities.SplashActivity'
     desired_caps['noSign'] = 'True'
     #跳过检查和对应用进行 debug 签名的步骤。只能在使用 UiAutomator 时使用，使用 selendroid 是不行。默认值 false
+    desired_caps['skipServerInstallation'] = 'True'
+    desired_caps['skipDeviceInitialization'] = 'True'
+    #上尝试禁止每次安装uiautomator2
     return desired_caps
 
 
@@ -67,10 +70,10 @@ def huawei_P9():
     return desired_caps
 
 
-def hw_honor_P9():
+def hw_honor_V9():
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
-    desired_caps['platformVersion'] = '8.0'
+    desired_caps['platformVersion'] = '9.0'
     desired_caps['noReset'] = True  # 不需要每次都安装apk
     #desired_caps['app'] = XXXXXXX  # 测试apk包
     desired_caps['deviceName'] = 'huawei-duk_al20-FFK0217609003306'  #V9

@@ -1,4 +1,14 @@
-﻿查看API文档
+﻿==============================================================================================
+conda环境中自己安装的包
+selenium 
+python打包工具：
+pip命令安装：pip install PyInstaller
+pip命令安装：pip install pywin32-ctypes
+pymysql   mysql
+pip install --upgrade autopep8      代码规范的自动代码规范 ctrl + Alt + L 代码自动规范
+==============================================================================================
+
+查看API文档
 
 python -m pydoc -p 4895
 

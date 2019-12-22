@@ -119,6 +119,7 @@ class Public_Page:
         :param Wait_Element: 等待页面的wait_activity
         :param check_element_id: 被检测元素的resource-id
         :param YESBack = True 退回上一页面， YESBack = False 不退回上一页面
+        :param TestCase = None 测试标题为空，则测试标题为title ,如果标注了内容则测试标题为标注内容
         :return: None
         '''
         if TestCase == None:
@@ -179,7 +180,7 @@ class Public_Page:
             casetitle = TestCase
         try:
             if MainWait_Element == None:
-                print (Public_Page.huoquactivity(driver))
+                print ("MainWait_Element======",Public_Page.huoquactivity(driver))
             else:
                 driver.wait_activity("%s"%MainWait_Element, 30)
                 #等待我家主界面activity
@@ -188,16 +189,19 @@ class Public_Page:
             try:
                 #这里点击定位的元素，逻辑上先选择点击带有名称的元素，如果报错了进入except流程
                 dondake = driver.find_elements_by_id("%s" % find_element_id)#这里获取所有要查找的元素
+                print ("定位到的元素为：",dondake)
                 for target in dondake:
+                    print ("target.text", target.text)
                     if target.text == casetitle:
                         target.click()
                         break
             except:
+                print ("执行到了这一步了dondakefengyongming")
                 driver.find_element_by_id("%s" % find_element_id).click()
                 #find_element_id.click()  之前是这么写的但是感觉走不通...当时可能没走脑子
 
             if Wait_Element == None:
-                print(Public_Page.huoquactivity(driver))
+                print("Wait_Element======",Public_Page.huoquactivity(driver))
             else:
                 driver.wait_activity("%s"%Wait_Element, 30)
                 time.sleep(2)

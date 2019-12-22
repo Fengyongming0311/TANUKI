@@ -178,6 +178,18 @@ driver.findElementByXPath("//android.view.View[contains(@resource-id,'switchAcco
 
 driver.findElementByXPath("//android.view.View[contains(@content-desc,'绑定')]").click();
 
+上面说的name被废弃了，但是xpath的写法如//android.widget.TextView[@text="账单"]是被支持的。
+
+xpath_ele = driver.find_element_by_xpath('//android.widget.TextView[contains(@resource-id,"tv.danmaku.bili:id/ranks")]')
+
+#xpath复数定位
+xpath_eles = driver.find_elements_by_xpath('//android.widget.TextView')
+texts = []
+for ele in xpath_eles:
+    texts.append(ele.text)
+print('xpath复数定位：'+str(texts))
+
+
 '''
 获取当前页面所有可点击的按钮？？
 Listelements = driver.find_element_by_xpath("//*")

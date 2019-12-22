@@ -1,11 +1,12 @@
 __author__ = 'TANUKI'
 #coding:utf-8
 #生产版本的自动化测试
+#前置条件：安装好生产环境的测试包，登录账号后切换到哈奇内测楼盘，页面处于实地派首页
 
 import sys
 sys.path.append("..")
 from appium import webdriver
-#import os,time
+import os,time
 from Public import testphone
 #img_file = img_file.img_file()  #定义图片文件保存的位置
 ############导入测试用例###############
@@ -28,51 +29,37 @@ shouji = testphone.testphone()
 driver = webdriver.Remote('http://localhost:4723/wd/hub', shouji)
 
 
-
-
-
-
-
-Public_Page.Switch_Navigation(driver, "我家")
-#已经进入楼盘，未登录状态，先进入我家
-Loginin.Loginin_nomal(driver, 13263160105, "00000000")
-#然后进行登录
-Public_Page.Switch_Navigation(driver, "实地派")
-#切换到实地派首页
-
-
 '''
-Loginin.OnceInto(driver)
-Loginin.OnceIntoLogin(driver)
-Loginin.OnceChoiceBuilding(driver, Building = "哈奇内部测试")
-#case:测试第一次登录
-############################################################
-
-#
-#普通账号登录
-#Loginin.Loginin_Switch_ID(driver, username = 13466738904, password = "00000000")
 ShiDiPai.IntoShiDiPai(driver)
-ShiDiPai.Building_Name_Container(driver)
-Public_Page.ChoiceBuilding(driver, Building = "哈奇内部测试")
-#case:切换账号并切换到哈其内部测试楼盘下
-
-
-#测试平时登录账户(在已有楼盘下账户未登录状态)
-
-ShiDiPai.IntoShiDiPai(driver)
-
+#进入实地派首页
 ShiDiPai.RecommendApp(driver)
-ShiDiPai.Brand_Image(driver)
-ShiDiPai.ZunXiangFuWu(driver)
-ShiDiPai.XiaLaPage(driver)
-ShiDiPai.Community_Image(driver)
-ShiDiPai.Recommend_Community_Title(driver)
-ShiDiPai.More_Building(driver)
-###################################
+#7个推荐应用和更多
 
+ShiDiPai.Brand_Image(driver)
+#点击商标图片——实地派会员专享权益（品牌宣传位）
+#BUG:点击进入58到家选择城市页面然后404了
+
+
+ShiDiPai.ZunXiangFuWu(driver)
+#查看尊享服务
+
+ShiDiPai.XiaLaPage(driver, 600)
+
+
+ShiDiPai.Community_Image(driver)
+#主要推荐的大图片楼盘,在哈奇内部测试楼盘不存在
+
+ShiDiPai.Recommend_Community_Title(driver)
+#精品楼盘
+实地派首页的自动化测试完成
+'''
 
 MyHome.IntoMyHome(driver)
+#进入我家页面
+time.sleep(3)
 MyHome.MyHome_two(driver)
+
+'''
 MyHome.Change_ProfilePhoto(driver)
 MyHome.Change_PersonalData(driver)
 MyHome.AddressManage(driver)
@@ -113,7 +100,10 @@ MyAPP.MyApplication(driver, AppName = "我的帖子")
 Public_Page.ExitBack(driver)
 #返回到我家页面
 MyHome.SmartBandInstruction(driver)
+'''
 
+
+'''
 NeighborTalk.IntoNeighbor(driver)
 #进入友邻页面
 NeighborTalk.IntoNewTopic(driver)

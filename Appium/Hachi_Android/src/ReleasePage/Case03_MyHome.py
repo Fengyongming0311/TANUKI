@@ -35,15 +35,25 @@ class MyHome:
     #修改用户个人资料
     def MyHome_two(driver):
         #测试我的消息页面是否正常显示
-        Public_Page.NomalTest(driver, title = "我的消息",
+
+
+        driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
+        #等待切换到我家页面30s
+        don = driver.find_element_by_id("com.pujitech.pujiejia:id/iv_message").click()
+        print ("don ====",don)
+        print ("don.text",don.text)
+
+        '''
+        Public_Page.debug_NomalTest(driver, title = "我的消息",
                               MainWait_Element = ".modules.main.views.activities.MainActivity",
                               find_element_id = "com.pujitech.pujiejia:id/iv_message",
-                              Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
+                              #Wait_Element = ".modules.main.views.activities.MainActivity",
                               check_element_id = "com.pujitech.pujiejia:id/tv_title"
                               )
-
+        '''
+        '''
         #测试设置页面是否正确显示
-        Public_Page.NomalTest(driver, title = "设置",
+        Public_Page.debug_NomalTest(driver, title = "设置",
                               MainWait_Element = ".modules.main.views.activities.MainActivity",
                               find_element_id = "com.pujitech.pujiejia:id/iv_setting",
                               Wait_Element = ".modules.usercenter.setting.views.activities.SettingActivity",
@@ -51,7 +61,7 @@ class MyHome:
                               )
 
         #点击头像图片进入个人资料页面
-        Public_Page.NomalTest(driver, title = "个人资料",
+        Public_Page.debug_NomalTest(driver, title = "个人资料",
                               MainWait_Element = ".modules.main.views.activities.MainActivity",
                               find_element_id = "com.pujitech.pujiejia:id/iv_avatar",
                               Wait_Element = ".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
@@ -59,7 +69,7 @@ class MyHome:
                               )
 
         #点击用户名称进入个人资料页面
-        Public_Page.NomalTest(driver, title = "个人资料",
+        Public_Page.debug_NomalTest(driver, title = "个人资料",
                               MainWait_Element = ".modules.main.views.activities.MainActivity",
                               find_element_id = "com.pujitech.pujiejia:id/tv_user_center_name",
                               Wait_Element = ".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
@@ -67,7 +77,7 @@ class MyHome:
                               )
 
         #点击用户手机号进入个人资料页面
-        Public_Page.NomalTest(driver, title = "个人资料",
+        Public_Page.debug_NomalTest(driver, title = "个人资料",
                               MainWait_Element = ".modules.main.views.activities.MainActivity",
                               find_element_id = "com.pujitech.pujiejia:id/tv_user_center_phone",
                               Wait_Element = ".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
@@ -75,7 +85,7 @@ class MyHome:
                               )
 
         #点击用户手机号进入个人资料页面，并修改个人资料数据
-
+        '''
     #修改个人头像功能
     def Change_ProfilePhoto(driver):
         '''
