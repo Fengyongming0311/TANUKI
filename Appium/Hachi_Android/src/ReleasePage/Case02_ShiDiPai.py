@@ -1,13 +1,15 @@
 __author__ = 'TANUKI'
-#coding:utf-8
-#from appium import webdriver
+# coding:utf-8
+# from appium import webdriver
 import time
 
 ###
 import sys
+
 sys.path.append("..")
 from FilePublic_Page import Public_Page
 import huadong
+
 ############################################
 """
         生产环境流程：
@@ -34,25 +36,27 @@ import huadong
         天津海棠雅著
         :return: None
         """
+
+
 ############################################
 class ShiDiPai:
     def IntoShiDiPai(driver):
-        #先点击实地派按钮进入首页页面
-        Public_Page.Switch_Navigation(driver, tab = "实地派")
+        # 先点击实地派按钮进入首页页面
+        Public_Page.Switch_Navigation(driver, tab="实地派")
 
     def RecommendApp(driver):
         """
         7个推荐应用和更多
         """
         try:
-            #测试全部应用(7个+更多)
+            # 测试全部应用(7个+更多)
             time.sleep(5)
             item = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_app_name")
             for dondake in item:
                 case = dondake.text
                 ShiDiPai.Hachilist_app(driver, case)
         except Exception as e:
-            print (e)
+            print(e)
             pass
 
     def Brand_Image(driver):
@@ -61,7 +65,7 @@ class ShiDiPai:
         :return: None
         """
         time.sleep(2)
-        #case = "实地派会员专享权益"
+        # case = "实地派会员专享权益"
         case = "保洁"
         try:
             driver.find_element_by_id('com.pujitech.pujiejia:id/iv_brand_image').click()
@@ -75,6 +79,7 @@ class ShiDiPai:
         except:
             print("测试点击%s用例失败............Failed" % case)
             time.sleep(2)
+            driver.back()
             pass
 
     def Zhongshan_Brand_Image(driver):
@@ -86,7 +91,6 @@ class ShiDiPai:
         try:
             driver.find_element_by_id('com.pujitech.pujiejia:id/iv_brand_image').click()
             time.sleep(5)
-
 
             print("测试点击%s用例Passed............成功" % case)
         except:
@@ -104,35 +108,35 @@ class ShiDiPai:
         """
         time.sleep(2)
         try:
-            Public_Page.debug_NomalTest(driver, title = "物业缴费",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_modules_name",
-                                        Wait_Element = ".modules.usercenter.community.views.activities.PropertyPaymentHomeActivity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        TestCase = "物业缴费"
+            Public_Page.debug_NomalTest(driver, title="物业缴费",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_modules_name",
+                                        Wait_Element=".modules.usercenter.community.views.activities.PropertyPaymentHomeActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        TestCase="物业缴费"
                                         )
 
             time.sleep(2)
 
-            Public_Page.debug_NomalTest(driver, title = "限时促销",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_modules_name",
-                                        Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        TestCase = "限时促销"
+            Public_Page.debug_NomalTest(driver, title="限时促销",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_modules_name",
+                                        Wait_Element=".modules.h5.views.activitys.CommonH5Activity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        TestCase="限时促销"
                                         )
 
             time.sleep(2)
 
-            Public_Page.debug_NomalTest(driver, title = "精品团购",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_modules_name",
-                                        Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        TestCase = "精品团购"
+            Public_Page.debug_NomalTest(driver, title="精品团购",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_modules_name",
+                                        Wait_Element=".modules.h5.views.activitys.CommonH5Activity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        TestCase="精品团购"
                                         )
         except Exception as e:
-            print ("报错为",e)
+            print("报错为", e)
             pass
 
     def ShengHuoPeiTao(driver):
@@ -142,32 +146,32 @@ class ShiDiPai:
         """
         time.sleep(2)
         try:
-            Public_Page.debug_NomalTest(driver, title = "贝瑞母婴",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_topic_row11",
-                                        #Wait_Element = ".modules.usercenter.community.views.activities.PropertyPaymentHomeActivity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        #TestCase = "物业缴费"
+            Public_Page.debug_NomalTest(driver, title="贝瑞母婴",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_topic_row11",
+                                        # Wait_Element = ".modules.usercenter.community.views.activities.PropertyPaymentHomeActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        # TestCase = "物业缴费"
                                         )
 
             time.sleep(2)
 
-            Public_Page.debug_NomalTest(driver, title = "海绵兴趣",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_topic_row12",
-                                        #Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        #TestCase = "限时促销"
+            Public_Page.debug_NomalTest(driver, title="海绵兴趣",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_topic_row12",
+                                        # Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        # TestCase = "限时促销"
                                         )
 
             time.sleep(2)
 
-            Public_Page.debug_NomalTest(driver, title = "家有健康",
-                                        MainWait_Element = ".modules.main.views.activities.MainActivity",
-                                        find_element_id = "com.pujitech.pujiejia:id/tv_topic_row13",
-                                        #Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
-                                        check_element_id = "com.pujitech.pujiejia:id/tv_title",
-                                        #TestCase = "精品团购"
+            Public_Page.debug_NomalTest(driver, title="家有健康",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_topic_row13",
+                                        # Wait_Element = ".modules.h5.views.activitys.CommonH5Activity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        # TestCase = "精品团购"
                                         )
             time.sleep(2)
 
@@ -198,15 +202,15 @@ class ShiDiPai:
                                         )
 
         except Exception as e:
-            print ("报错为",e)
+            print("报错为", e)
             pass
 
     def ZunXiangFuWu(driver):
         case = "尊享服务"
-        #内测的尊享服务现在点进去是度小月商家首页
+        # 内测的尊享服务现在点进去是度小月商家首页
         driver.find_element_by_id("com.pujitech.pujiejia:id/iv_topic_row11").click()
         time.sleep(3)
-        #已经进去了   度小月 xpath定位不到，以后可以加个截图或者尝试定位xpath
+        # 已经进去了   度小月 xpath定位不到，以后可以加个截图或者尝试定位xpath
         driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
 
         '''
@@ -306,13 +310,13 @@ class ShiDiPai:
             time.sleep(2)
             pass
 
-    def XiaLaPage(driver,num):
+    def XiaLaPage(driver, num):
         """
         下滑页面以显示推荐楼盘
         :return: None
         """
         time.sleep(2)
-        huadong.shanghua(driver, num)   #数字越大滑动距离越小
+        huadong.shanghua(driver, num)  # 数字越大滑动距离越小
 
     def Community_Image(driver):
         """
@@ -345,7 +349,7 @@ class ShiDiPai:
         # print ("点击进入各个推荐楼盘点击进入各个推荐楼盘")
         try:
             for case in tuijianbuild:
-                print ("这次楼盘名称是：", case)
+                print("这次楼盘名称是：", case)
                 time.sleep(2)
                 lpan = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_community_name")
                 for target in lpan:
@@ -356,7 +360,7 @@ class ShiDiPai:
                         break
                         # 点完了就跳出循环，否则会再次找寻case内容导致报错
         except Exception as e:
-            print ("点击文字推荐楼盘报错信息为:",e)
+            print("点击文字推荐楼盘报错信息为:", e)
             pass
 
     def More_Building(driver):
@@ -376,7 +380,7 @@ class ShiDiPai:
                       "天津海棠雅著": "天津海棠雅著 9300元/m² 天津天津宝坻区津蓟高速温泉城出口西侧500米 品质大盘 全龄配套 智能大盘 低密度"}
         try:
             # driver.find_elements_by_id("com.pujitech.pujiejia:id/ll_more_community").click()
-            print ("测试点击更多楼盘11111111111111111")
+            print("测试点击更多楼盘11111111111111111")
             driver.find_element_by_android_uiautomator('new UiSelector().text("更多楼盘")').click()
 
             driver.wait_activity(".modules.h5.views.activitys.CommonH5Activity", 30)
@@ -427,7 +431,6 @@ class ShiDiPai:
             print("点击文字推荐楼盘报错信息为:", e)
             pass
 
-
     def Hachilist_app(driver, case):
         """
         全部应用（如果有改动改这里）
@@ -441,38 +444,38 @@ class ShiDiPai:
         其中["报事报修", "手机开门"]点击后判断是否为业主
         """
         application = ["餐饮美食", "社区商城", "服务预定", "课程培训", "精品团购", "限时促销", "家政服务",
-                       "社区公告", "物业缴费", "专享活动", "精品楼盘",
+                       "社区公告", "物业缴费", "专享活动", "精品楼盘", "报事报修",
                        "人脸识别", "投诉建议", "更多"]
         time.sleep(3)
         if case in application:
             try:
-                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")'%case).click()
+                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")' % case).click()
                 time.sleep(4)
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_title")
-                if checkpoint.text == case or checkpoint.text == "握手分期"\
-                    or checkpoint.text == "握手金融" or checkpoint.text == "保洁":
-                    #已经没有握手分期和握手金融了
+                if checkpoint.text == case or checkpoint.text == "握手分期" \
+                        or checkpoint.text == "握手金融" or checkpoint.text == "保洁":
+                    # 已经没有握手分期和握手金融了
                     driver.back()
                 else:
-                    print ("标题为%s...不在应用列表中，请重新确认标题名称。"%checkpoint.text)
+                    print("标题为%s...不在应用列表中，请重新确认标题名称。" % checkpoint.text)
                     driver.back()
-                print("测试点击%s用例Passed............成功"%case)
+                print("测试点击%s用例Passed............成功" % case)
                 time.sleep(2)
             except:
-                print("测试点击%s用例失败............Failed"%case)
+                print("测试点击%s用例失败............Failed" % case)
                 time.sleep(2)
                 pass
-        elif case == "报事报修" or case == u"手机开门":
-            #判断是否在楼盘下有房
+        elif case == u"手机开门":
+            # 判断是否在楼盘下有房
             try:
-                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")'%case).click()
+                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")' % case).click()
                 time.sleep(5)
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_content")
-                #print ("查看非业主的checkpoint内容===================为",checkpoint)
+                # print ("查看非业主的checkpoint内容===================为",checkpoint)
                 if checkpoint.text == "您没有在该小区认证房间":
-                    print("点击%s后提示："%case, checkpoint.text)
+                    print("点击%s后提示：" % case, checkpoint.text)
                     driver.find_element_by_id("com.pujitech.pujiejia:id/tv_cancel").click()
                     print("测试点击%s用例Passed............成功" % case)
                 else:
@@ -485,12 +488,12 @@ class ShiDiPai:
 
 
             except:
-                print("测试点击%s用例失败............Failed"%case)
+                print("测试点击%s用例失败............Failed" % case)
                 time.sleep(2)
                 pass
         elif case == u"智能家居":
             try:
-                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")'%case).click()
+                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")' % case).click()
                 time.sleep(6)
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_base_title")
@@ -500,23 +503,23 @@ class ShiDiPai:
                     except:
                         driver.back()
                 else:
-                    print("标题为%s...不在应用列表中，请重新确认标题名称。"%checkpoint.text)
+                    print("标题为%s...不在应用列表中，请重新确认标题名称。" % checkpoint.text)
                     driver.back()
-                print("测试点击%s用例Passed............成功"%case)
+                print("测试点击%s用例Passed............成功" % case)
             except:
-                print("测试点击%s用例失败............Failed"%case)
+                print("测试点击%s用例失败............Failed" % case)
                 time.sleep(2)
                 pass
         elif case == u"智能手环":
             try:
-                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")'%case).click()
+                driver.find_element_by_android_uiautomator('new UiSelector().text("%s")' % case).click()
                 time.sleep(8)
-                #点击手环进入我家页面，暂时判断页面是否有全部应用元素
+                # 点击手环进入我家页面，暂时判断页面是否有全部应用元素
                 ##################以后优化，每隔1秒执行一次循环，然后直到找到元素，退出整体循环
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/all_application_tv")
-                print (checkpoint.text)
+                print(checkpoint.text)
                 if checkpoint.text == "全部应用":
-                    #改成简单的方法
+                    # 改成简单的方法
                     retap = "实地派"
                     try:
                         driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
@@ -529,7 +532,7 @@ class ShiDiPai:
                             # 点完了就跳出循环，否则会再次找寻case内容导致报错
                         print("测试点击%s用例Passed............成功" % case)
                         time.sleep(3)
-                        #为了下一次循环等待3s
+                        # 为了下一次循环等待3s
                     except:
                         print("未切换到首页页面，程序退出....")
                         print("测试点击%s用例失败............Failed" % case)
@@ -537,7 +540,7 @@ class ShiDiPai:
 
 
                 else:
-                    print ("没有找到%s,在当前页面,请重新检查测试脚本..."%checkpoint.text)
+                    print("没有找到%s,在当前页面,请重新检查测试脚本..." % checkpoint.text)
                     print("测试点击%s用例失败............Failed" % case)
                     time.sleep(2)
 
@@ -562,10 +565,10 @@ class ShiDiPai:
             huadong.xiahua(driver, 500)
 
             driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
-            print ("测试进入%s楼盘用例Passed............成功"%case)
+            print("测试进入%s楼盘用例Passed............成功" % case)
         except Exception as e:
-            print ("测试进入%s楼盘用例失败............Failed"%case)
-            print ("报错信息为:",e)
+            print("测试进入%s楼盘用例失败............Failed" % case)
+            print("报错信息为:", e)
             time.sleep(2)
             pass
 
@@ -577,9 +580,3 @@ class ShiDiPai:
         driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
         time.sleep(2)
         driver.find_element_by_id("com.pujitech.pujiejia:id/rl_building_name_container").click()
-
-
-
-
-
-

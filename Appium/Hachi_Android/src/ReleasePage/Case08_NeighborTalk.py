@@ -13,8 +13,9 @@ class NeighborTalk:
     #进入友邻
     def IntoNeighbor(driver):
         #先点击我家按钮进入首页页面
+        time.sleep(2)
         Public_Page.Switch_Navigation(driver, tab="友邻")
-
+        time.sleep(2)
     #点击发帖
     def IntoNewTopic(driver):
         driver.wait_activity(".modules.main.views.activities.MainActivity", 30)

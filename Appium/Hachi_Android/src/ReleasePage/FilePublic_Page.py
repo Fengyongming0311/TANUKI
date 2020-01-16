@@ -3,13 +3,15 @@ import time
 import random
 
 import sys
+
 sys.path.append("..")
 sys.path.append("../Public/PublicProgram/")
 from name import CrateNamepy
 from phone import CratePhoneNopy
 
+
 class Public_Page:
-    #进入登录页面后的登录功能
+    # 进入登录页面后的登录功能
     def DengLu(driver, username, password):
         '''
         用户登录页面
@@ -17,23 +19,23 @@ class Public_Page:
         try:
             time.sleep(3)
             driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_phone_edt").clear()
-            #先清一下文本
+            # 先清一下文本
             driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_phone_edt").send_keys(username)
-            #输入用户名
-            #com.pujitech.pujiejia:id/et_login_username
-            #2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_phone_edt
+            # 输入用户名
+            # com.pujitech.pujiejia:id/et_login_username
+            # 2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_phone_edt
 
             time.sleep(1)
             driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_password_edt").send_keys(password)
-            #输入密码
-            #com.pujitech.pujiejia:id/et_login_password
-            #2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_password_edt
+            # 输入密码
+            # com.pujitech.pujiejia:id/et_login_password
+            # 2019.4.24 发现改为com.pujitech.pujiejia:id/login_password_password_edt
 
             time.sleep(1)
             driver.find_element_by_id("com.pujitech.pujiejia:id/login_password_perform_btn").click()
-            #com.pujitech.pujiejia:id/btn_login
-            #2019.4.24发现改为com.pujitech.pujiejia:id/login_password_perform_btn
-            #点击立即登录
+            # com.pujitech.pujiejia:id/btn_login
+            # 2019.4.24发现改为com.pujitech.pujiejia:id/login_password_perform_btn
+            # 点击立即登录
 
             denglu = True
             return denglu
@@ -50,26 +52,24 @@ class Public_Page:
         """
         time.sleep(2)
         driver.find_element_by_id("com.pujitech.pujiejia:id/iv_setting").click()
-        #点击进入设置
+        # 点击进入设置
 
         time.sleep(2)
         driver.find_element_by_id("com.pujitech.pujiejia:id/rl_login_out").click()
-        #点击退出按钮
+        # 点击退出按钮
 
         time.sleep(2)
         driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
-        #点击确认
+        # 点击确认
         try:
             daki = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_content")
             if daki.text == "楼盘不存在，请重新选择楼盘！":
                 driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
-                Public_Page.ChoiceBuilding(driver, Building = "中山璟湖城")
+                Public_Page.ChoiceBuilding(driver, Building="中山璟湖城")
         except:
             pass
 
-
-
-    #切换导航栏功能
+    # 切换导航栏功能
     def Switch_Navigation(driver, tab):
         """
         切换导航栏功能
@@ -85,32 +85,31 @@ class Public_Page:
                     break
                 # 点完了就跳出循环，否则会再次找寻case内容导致报错
         except Exception as e:
-            print (e)
-            print("未切换到%s页面，程序退出...."%tab)
+            print(e)
+            print("未切换到%s页面，程序退出...." % tab)
             pass
 
-    #给出一个随机数，判断上滑下滑
+    # 给出一个随机数，判断上滑下滑
     def RandomNum():
-        num = random.randint(0,1)
+        num = random.randint(0, 1)
         return num
 
-    #随机获取用户姓名
+    # 随机获取用户姓名
     def CrateName(number):
         import os
         file_path = os.getcwd()
-        #获取当前文件路径
+        # 获取当前文件路径
         dirname, delname = os.path.split(file_path)
         txtpath = dirname + "\\Public\\PublicProgram\\"
-        #重新拼接路径
+        # 重新拼接路径
         return CrateNamepy.run(number, txtpath)
 
-
-    #随机获取手机号
+    # 随机获取手机号
     def CratePhoneNo(num):
         return CratePhoneNopy.run(num)
 
     def NomalTest(driver, title, find_element_id, check_element_id,
-                  MainWait_Element = None, Wait_Element = None, YESBack = True, TestCase = None):
+                  MainWait_Element=None, Wait_Element=None, YESBack=True, TestCase=None):
         '''
         测试每个按钮点击进入查看功能是否正常
         :param title: 进入后页面title名称
@@ -128,40 +127,39 @@ class Public_Page:
             casetitle = TestCase
         try:
             if MainWait_Element == None:
-                print (Public_Page.huoquactivity(driver))
+                print(Public_Page.huoquactivity(driver))
             else:
-                driver.wait_activity("%s"%MainWait_Element, 30)
-                #等待我家主界面activity
+                driver.wait_activity("%s" % MainWait_Element, 30)
+                # 等待我家主界面activity
                 time.sleep(2)
             try:
-                #这块逻辑不对，如果不定义title每次会点击同一个元素
-                driver.find_element_by_id("%s"%find_element_id).click()
+                # 这块逻辑不对，如果不定义title每次会点击同一个元素
+                driver.find_element_by_id("%s" % find_element_id).click()
             except:
                 find_element_id.click()
 
             if Wait_Element == None:
                 print(Public_Page.huoquactivity(driver))
             else:
-                driver.wait_activity("%s"%Wait_Element, 30)
+                driver.wait_activity("%s" % Wait_Element, 30)
                 time.sleep(2)
 
-            checkpoint = driver.find_element_by_id("%s"%check_element_id)
+            checkpoint = driver.find_element_by_id("%s" % check_element_id)
             if checkpoint.text == title and YESBack == True:
                 driver.back()
-                print("测试点击%s用例Passed............成功" %casetitle)
+                print("测试点击%s用例Passed............成功" % casetitle)
             elif checkpoint.text == title and YESBack == False:
                 pass
             else:
-                print("测试点击%s用例失败dondake............Failed" %casetitle)
+                print("测试点击%s用例失败dondake............Failed" % casetitle)
 
 
         except:
-            print ("测试点击%s用例失败............Failed"%casetitle)
+            print("测试点击%s用例失败............Failed" % casetitle)
             pass
 
-
     def debug_NomalTest(driver, title, find_element_id, check_element_id,
-                  MainWait_Element = None, Wait_Element = None, YESBack = True, TestCase = None):
+                        MainWait_Element=None, Wait_Element=None, YESBack=True, TestCase=None):
         '''
         测试每个按钮点击进入查看功能是否正常
         :param title: 进入后页面title名称
@@ -180,34 +178,43 @@ class Public_Page:
             casetitle = TestCase
         try:
             if MainWait_Element == None:
-                print ("MainWait_Element======",Public_Page.huoquactivity(driver))
+                print("MainWait_Element======", Public_Page.huoquactivity(driver))
             else:
-                driver.wait_activity("%s"%MainWait_Element, 30)
-                #等待我家主界面activity
+                driver.wait_activity("%s" % MainWait_Element, 30)
+                # 等待我家主界面activity
                 time.sleep(2)
 
             try:
-                #这里点击定位的元素，逻辑上先选择点击带有名称的元素，如果报错了进入except流程
-                dondake = driver.find_elements_by_id("%s" % find_element_id)#这里获取所有要查找的元素
-                print ("定位到的元素为：",dondake)
+                # 这里点击定位的元素，逻辑上先选择点击带有名称的元素，如果报错了进入except流程
+                dondake = driver.find_elements_by_id("%s" % find_element_id)  # 这里获取所有要查找的元素
+                #判定列表为空，直接进入except
+                if dondake[0] is None:
+                    raise Exception ("没有定位到元素...进入except流程")
+                #下：如果定位的元素中没有text是个图标的话，不适用于这种定位方法
                 for target in dondake:
-                    print ("target.text", target.text)
+                    #print("target.text,", target.text)
                     if target.text == casetitle:
                         target.click()
                         break
+                    else:
+                        raise Exception ("前面没有定位到元素，查看是否进入except")
             except:
-                print ("执行到了这一步了dondakefengyongming")
-                driver.find_element_by_id("%s" % find_element_id).click()
-                #find_element_id.click()  之前是这么写的但是感觉走不通...当时可能没走脑子
+                #print("执行到了except这一步了dondakefengyongming")
+                try:
+                    driver.find_element_by_id("%s" % find_element_id).click()
+                except:
+                    find_element_id.click()
+                    #这个是之前已经通过find_element_by_id定位出来了，所以可以直接点击
 
+            time.sleep(2)
             if Wait_Element == None:
-                print("Wait_Element======",Public_Page.huoquactivity(driver))
+                print("Wait_Element======", Public_Page.huoquactivity(driver))
             else:
-                driver.wait_activity("%s"%Wait_Element, 30)
+                driver.wait_activity("%s" % Wait_Element, 30)
                 time.sleep(2)
             try:
-                #定位到元素则判断，没定位到进入异常driver.back()退出程序
-                checkpoint = driver.find_element_by_id("%s"%check_element_id)
+                # 定位到元素则判断，没定位到进入异常driver.back()退出程序
+                checkpoint = driver.find_element_by_id("%s" % check_element_id)
 
                 if checkpoint.text == title and YESBack == True:
                     driver.back()
@@ -220,18 +227,18 @@ class Public_Page:
                 else:
                     print("测试点击%s用例失败dondake............Failed" % casetitle)
             except:
-                print (title + "没有定位到Title，返回上一页面...")
+                print(title + "没有定位到Title，返回上一页面...")
                 driver.back()
 
 
 
 
         except Exception as e:
-            print (e)
-            print ("测试点击%s用例失败............Failed"%casetitle)
+            print(e)
+            print("测试点击%s用例失败............Failed" % casetitle)
             pass
 
-    #随机切换楼盘
+    # 随机切换楼盘
     def RandomBuilding(driver):
         """
         先决条件：进入实地派
@@ -240,23 +247,23 @@ class Public_Page:
         driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
         time.sleep(2)
         driver.find_element_by_id("com.pujitech.pujiejia:id/rl_building_name_container").click()
-        #选择标题进入切换楼盘页面
+        # 选择标题进入切换楼盘页面
 
         driver.wait_activity(".modules.city.views.activities.BuildingActivity", 30)
         time.sleep(2)
 
         AllBuilding = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_city")
 
-        rondomnum = random.randint(0,2)
-        #修改选择楼盘范围0是第一个
+        rondomnum = random.randint(0, 2)
+        # 修改选择楼盘范围0是第一个
         RandomBuilding = AllBuilding[rondomnum]
         time.sleep(1)
 
         RandomBuilding.click()
-        #选择完楼盘自动跳转到实地派页面
+        # 选择完楼盘自动跳转到实地派页面
 
-    #指定切换楼盘
-    def ChoiceBuilding(driver, Building, into = "No"):
+    # 指定切换楼盘
+    def ChoiceBuilding(driver, Building, into="No"):
         """
         先决条件：进入实地派页面
         :param Building 传入楼盘名称
@@ -278,32 +285,30 @@ class Public_Page:
             driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
 
             driver.find_element_by_id("com.pujitech.pujiejia:id/rl_building_name_container").click()
-            #点击后进入选择楼盘页面
+            # 点击后进入选择楼盘页面
             time.sleep(3)
             AllBuilding = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_city")
 
             for i in AllBuilding:
-                print (i.text)
+                print(i.text)
                 if i.text == Building:
                     time.sleep(2)
                     i.click()
                     break
 
-
-
-
-    #您没有在该小区认证房间
+    # 您没有在该小区认证房间
     def NoHomeInThisBuilding(driver):
         try:
             time.sleep(6)
             checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_content")
-            if checkpoint.text == "您没有在该小区认证房间":
+            if checkpoint.text == "此功能需要房间绑定认证后才能使用":
                 driver.find_element_by_id("com.pujitech.pujiejia:id/tv_cancel").click()
         except:
             pass
 
     def ExitBack(driver):
-        #只要页面有<按钮就能返回上一页面
+        time.sleep(2)
+        # 只要页面有<按钮就能返回上一页面
         driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
 
     """
@@ -311,10 +316,8 @@ class Public_Page:
     dondake = Public_Page.huoquactivity(driver)
     print (dondake)
     """
+
     def huoquactivity(driver):
         time.sleep(5)
         ac = driver.current_activity
         return ac
-
-
-

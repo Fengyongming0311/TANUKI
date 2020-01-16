@@ -3,7 +3,7 @@
 import requests,json
 import urllib3
 #urllib3.disable_warnings()
-url="http://172.16.1.44:8081/sms/login"
+url="http://172.16.1.44:8080/sms/login"
 headers={'Content-Type':'application/json;charset=UTF-8'}
 
 request_param={
