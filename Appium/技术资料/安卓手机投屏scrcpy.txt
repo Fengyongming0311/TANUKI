@@ -1,0 +1,17 @@
+https://github.com/Genymobile/scrcpy
+
+生产包下载地址
+https://github.com/Genymobile/scrcpy/releases
+
+下载后解压
+放到想放的文件夹下
+然后配置环境变量path
+C:\Users\TANUKI\AppData\Roaming\npm\scrcpy-win64-v1.12.1
+这是我的路径
+
+
+然后连接手机到电脑
+
+确保adb命令正确
+然后cmd 
+输入scrcpy

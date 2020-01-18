@@ -187,24 +187,24 @@ class Public_Page:
             try:
                 # 这里点击定位的元素，逻辑上先选择点击带有名称的元素，如果报错了进入except流程
                 dondake = driver.find_elements_by_id("%s" % find_element_id)  # 这里获取所有要查找的元素
-                #判定列表为空，直接进入except
+                # 判定列表为空，直接进入except
                 if dondake[0] is None:
-                    raise Exception ("没有定位到元素...进入except流程")
-                #下：如果定位的元素中没有text是个图标的话，不适用于这种定位方法
+                    raise Exception("没有定位到元素...进入except流程")
+                # 下：如果定位的元素中没有text是个图标的话，不适用于这种定位方法
                 for target in dondake:
-                    #print("target.text,", target.text)
+                    # print("target.text,", target.text)
                     if target.text == casetitle:
                         target.click()
                         break
                     else:
-                        raise Exception ("前面没有定位到元素，查看是否进入except")
+                        raise Exception("前面没有定位到元素，查看是否进入except")
             except:
-                #print("执行到了except这一步了dondakefengyongming")
+                # print("执行到了except这一步了dondakefengyongming")
                 try:
                     driver.find_element_by_id("%s" % find_element_id).click()
                 except:
                     find_element_id.click()
-                    #这个是之前已经通过find_element_by_id定位出来了，所以可以直接点击
+                    # 这个是之前已经通过find_element_by_id定位出来了，所以可以直接点击
 
             time.sleep(2)
             if Wait_Element == None:

@@ -35,74 +35,79 @@ class MyHome:
     ##################下面是正式的测试代码####################
     # 进入我的消息页面和设置页面查看页面是否正确显示
     # 修改用户个人资料
-    def MyHome_two(driver):
-        # 测试我的消息页面是否正常显示
+    def MyHome_MsgSetting(driver):
+        try:
+            # 测试我的消息页面是否正常显示
+            driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
+            # 等待切换到我家页面30s
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_message").click()
+            time.sleep(20)
 
-        driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
-        # 等待切换到我家页面30s
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_message").click()
-        time.sleep(20)
+            driver.wait_activity(".modules.h5.views.activitys.CommonH5Activity", 30)
+            # 我的消息内容加载时间较长，目前开发尚未解决问题，先这么写，以后优化
+            driver.back()
 
-        driver.wait_activity(".modules.h5.views.activitys.CommonH5Activity", 30)
-        # 我的消息内容加载时间较长，目前开发尚未解决问题，先这么写，以后优化
-        driver.back()
+            '''
+            Public_Page.debug_NomalTest(driver, title="我的消息",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/iv_message",
+                                        Wait_Element = None,
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                        )
+            '''
 
-        '''
-        Public_Page.debug_NomalTest(driver, title="我的消息",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/iv_message",
-                                    Wait_Element = None,
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                    )
-        '''
+            # 测试设置页面是否正确显示
+            Public_Page.debug_NomalTest(driver, title="设置",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/iv_setting",
+                                        Wait_Element=".modules.usercenter.setting.views.activities.SettingActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                        )
+            '''
+            
+            driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_setting").click()
+            time.sleep(2)
+            driver.wait_activity(".modules.usercenter.setting.views.activities.SettingActivity", 30)
+            checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_title")
+            if checkpoint.text == "设置":
+                driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+                print("我家→设置模块可以正常访问....................PASS")
+            else:
+                print("我家→设置模块出现BUG....................用例失败")
+            '''
+            # 点击头像图片进入个人资料页面
+            Public_Page.debug_NomalTest(driver, title="个人资料",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/iv_avatar",
+                                        Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                        )
+            print("点击头像图片进入个人资料页面测试完成")
 
-        # 测试设置页面是否正确显示
-        Public_Page.debug_NomalTest(driver, title="设置",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/iv_setting",
-                                    Wait_Element=".modules.usercenter.setting.views.activities.SettingActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                    )
-        '''
-        
-        driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_setting").click()
-        time.sleep(2)
-        driver.wait_activity(".modules.usercenter.setting.views.activities.SettingActivity", 30)
-        checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_title")
-        if checkpoint.text == "设置":
-            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
-            print("我家→设置模块可以正常访问....................PASS")
-        else:
-            print("我家→设置模块出现BUG....................用例失败")
-        '''
-        # 点击头像图片进入个人资料页面
-        Public_Page.debug_NomalTest(driver, title="个人资料",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/iv_avatar",
-                                    Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                    )
-        print("点击头像图片进入个人资料页面测试完成")
+            # 点击用户名称进入个人资料页面
+            Public_Page.debug_NomalTest(driver, title="个人资料",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_user_center_name",
+                                        Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                        )
+            print("点击用户名称进入个人资料页面测试完成")
 
-        # 点击用户名称进入个人资料页面
-        Public_Page.debug_NomalTest(driver, title="个人资料",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/tv_user_center_name",
-                                    Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                    )
-        print("点击用户名称进入个人资料页面测试完成")
-
-        # 点击用户手机号进入个人资料页面
-        Public_Page.debug_NomalTest(driver, title="个人资料",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/tv_user_center_phone",
-                                    Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                    )
-        print("点击用户手机号进入个人资料页面")
-        # 点击用户手机号进入个人资料页面，并修改个人资料数据
+            # 点击用户手机号进入个人资料页面
+            Public_Page.debug_NomalTest(driver, title="个人资料",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_user_center_phone",
+                                        Wait_Element=".modules.usercenter.selfinfo.views.activities.SelfInfoActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                        )
+            print("点击用户手机号进入个人资料页面")
+            # 点击用户手机号进入个人资料页面，并修改个人资料数据
+            unittest_TestResult = True
+        except:
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
 
     # 修改个人头像功能
     def Change_ProfilePhoto(driver):
@@ -116,7 +121,7 @@ class MyHome:
             # 等待我家主界面activity
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/tv_user_center_name").click()
-            #点击名称进入个人资料页面
+            # 点击名称进入个人资料页面
             driver.wait_activity(".modules.usercenter.selfinfo.views.activities.SelfInfoActivity", 30)
             time.sleep(1)
             checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_title")
@@ -133,7 +138,7 @@ class MyHome:
                     # 点相机com.pujitech.pujiejia:id/tv_camera
                     driver.find_element_by_id("com.pujitech.pujiejia:id/tv_camera").click()
 
-                    driver.wait_activity(".CameraActivity", 30)
+                    driver.wait_activity(".ThirdCamera", 30)
                     time.sleep(3)
                     driver.back()
                     # 等待进入照相功能,进入后等待3s后退出
@@ -146,23 +151,24 @@ class MyHome:
                     time.sleep(2)
                     driver.find_element_by_id("com.pujitech.pujiejia:id/tv_gallery").click()
                     # 点相册com.pujitech.pujiejia:id/tv_gallery
-                    driver.wait_activity(".modules.h5.selectimage.activities.SelectImageActivity", 30)
+
                     time.sleep(3)
                     # 点击相册名称进去选图片
-                    #driver.find_element_by_android_uiautomator('new UiSelector().text("相机")').click()
+                    # driver.find_element_by_android_uiautomator('new UiSelector().text("相机")').click()
                     driver.wait_activity(".modules.h5.selectimage.activities.SelectImageActivity", 30)
                     time.sleep(3)
-                    driver.tap([(152, 217)])
-                    #选取第一张图片
+                    driver.tap([(204, 288)])
+                    # 选取第一张图片
                     time.sleep(3)
                     driver.find_element_by_id("com.pujitech.pujiejia:id/tv_right_text").click()
-                    #点击确定按钮,进入到选取图片大小页面
+                    # 点击确定按钮,进入到选取图片大小页面
                     time.sleep(3)
                     driver.find_element_by_id("com.pujitech.pujiejia:id/ib_clip_done").click()
-                    #点击完成的对勾
-                    driver.find_element_by_id("com.pujitech.pujiejia:id/btn_save_self_info").click()
+                    # 点击完成的对勾
                     time.sleep(3)
-                    #点击一下保存
+                    driver.find_element_by_id("com.pujitech.pujiejia:id/btn_save_self_info").click()
+
+                    # 点击一下保存
 
                     '''
                     页面代码修改了此段废弃
@@ -181,12 +187,17 @@ class MyHome:
                     time.sleep(2)
                     '''
                     print("测试修改用户头像用例Passed............成功")
+                    unittest_TestResult = True
                 except:
                     print("测试修改用户头像用例失败............Failed")
+                    unittest_TestResult = False
                     pass
         except:
             print("测试修改用户头像用例失败............Failed")
+            unittest_TestResult = False
             pass
+        finally:
+            return unittest_TestResult
 
     def Change_PersonalData(driver):
         '''
@@ -197,19 +208,18 @@ class MyHome:
         # 修改昵称
         # 修改性别如果名字叫大妈的狂笑则为女性，如果是蒜泥晾衣白肉则为男性
         try:
-
-            #如果修改完头像后直接进入这个页面，那么不用点击名字进入个人资料页
+            # 如果修改完头像后直接进入这个页面，那么不用点击名字进入个人资料页
             driver.wait_activity(".modules.main.views.activities.MainActivity", 30)
             # 等待我家主界面activity
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/tv_user_center_name").click()
 
             dondake = Public_Page.huoquactivity(driver)
-            print("此页面的activity",dondake)
-            #driver.wait_activity(".modules.usercenter.selfinfo.views.activities.SelfInfoActivity", 30)
+            print("此页面的activity", dondake)
+            # driver.wait_activity(".modules.usercenter.selfinfo.views.activities.SelfInfoActivity", 30)
             time.sleep(3)
-            name1 = "美国队长的盾牌"
-            name2 = "蒜泥晾衣白肉"
+            name1 = "果子狸大佐"
+            name2 = "钢铁侠的audiA8L"
 
             nickname = driver.find_element_by_id("com.pujitech.pujiejia:id/et_self_info_nickname")
 
@@ -228,28 +238,25 @@ class MyHome:
                 nickname.clear()
                 nickname.send_keys(name1)
                 print("测试修改昵称为%s用例Passed............成功" % name1)
-        except:
-            print("测试修改用户昵称用例失败............Failed")
+            else:
+                print("测试修改用户昵称用例失败............Failed")
 
-        # 修改用户的性别
-        time.sleep(2)
-        try:
+            # 修改用户的性别
+            time.sleep(2)
             nickname = driver.find_element_by_id("com.pujitech.pujiejia:id/et_self_info_nickname")
             if nickname.text == name1:
                 driver.find_element_by_id("com.pujitech.pujiejia:id/rb_female").click()
             elif nickname.text == name2:
                 driver.find_element_by_id("com.pujitech.pujiejia:id/rb_male").click()
+                print("测试修改用户的性别用例Passed............成功")
+            else:
+                print("测试修改用户的性别用例失败............Failed")
 
-            print("测试修改用户的性别用例Passed............成功")
-        except:
-            print("测试修改用户的性别用例失败............Failed")
-
-        # 修改用户生日信息
-        """
-        此滑动操作是以VivoX9屏幕大小选定的坐标，如若跑其他
-        手机脚本无法滑动脚本报错，请修改适应其他手机脚本坐标
-        """
-        try:
+            # 修改用户生日信息
+            """
+            此滑动操作是以VivoX9屏幕大小选定的坐标，如若跑其他
+            手机脚本无法滑动脚本报错，请修改适应其他手机脚本坐标
+            """
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/rl_self_info_birthday_container").click()
             time.sleep(2)
@@ -280,11 +287,8 @@ class MyHome:
             driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
             time.sleep(2)
             print("测试修改用户生日信息用例Passed............成功")
-        except:
-            print("测试修改用户生日信息用例失败............Failed")
-            pass
-        # 修改用户身高
-        try:
+
+            # 修改用户身高
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/rl_self_info_height_container").click()
             time.sleep(2)
@@ -299,12 +303,8 @@ class MyHome:
             driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
             time.sleep(2)
             print("测试修改用户身高信息用例Passed............成功")
-        except:
-            print("测试修改用户身高信息用例失败............Failed")
-            pass
 
-        # 修改用户体重不可操作
-        try:
+            # 修改用户体重不可操作
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/rl_self_info_weight_container").click()
             time.sleep(2)
@@ -319,18 +319,18 @@ class MyHome:
             driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
             time.sleep(2)
             print("测试修改用户体重信息用例Passed............成功")
-        except:
-            print("测试修改用户体重信息用例失败............Failed")
-            pass
 
-        # 点击保存按钮
-        try:
+            # 点击保存按钮
             driver.wait_activity(".modules.usercenter.selfinfo.views.activities.SelfInfoActivity", 30)
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/btn_save_self_info").click()
             print("测试保存修改的个人资料信息用例Passed............成功")
+            unittest_TestResult = True
         except:
-            print("测试保存修改的个人资料信息用例失败............Failed")
+            unittest_TestResult = False
+            print("测试保存修改的个人资料信息用例Passed............失败Failed")
+        finally:
+            return unittest_TestResult
 
     '''
     #地址管理
@@ -368,11 +368,15 @@ class MyHome:
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
             # 返回上一页面
+            unittest_TestResult = True
         except:
             print("添加地址失败.....................................Failed")
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
             # 返回上一页面
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
 
     def AddAddress(driver):
         """
@@ -430,24 +434,30 @@ class MyHome:
             time.sleep(3)
 
             deletebtn = driver.find_elements_by_id("com.pujitech.pujiejia:id/ll_delete")
-            # print (deletebtn[0])
-            # print (deletebtn[1])
-            # print (deletebtn[2])
-            # print (deletebtn[3])
+            #获取所有地址列表
+            #print (deletebtn[0])
+            #print (deletebtn[1])
+            #print (deletebtn[2])
+            #print (deletebtn[3])
             for i in range(0, cishu):
                 NoTwo = deletebtn[1]
+                #删除第二条数据？？
                 NoTwo.click()
-                time.sleep(3)
+                time.sleep(2)
                 driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
             print("删除地址%s条Succeeded....................................成功" % cishu)
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
             # 返回上一页面
+            unittest_TestResult = True
         except:
             print("删除地址%s条失败.....................................Failed" % cishu)
             time.sleep(2)
             driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
             # 失败也返回上一页面
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
 
     def SmartBandInstruction(driver):
         """
@@ -455,9 +465,9 @@ class MyHome:
         先决条件：进入我家页面
         :return: None
         """
-        print ("执行到这里")
+        print("执行到这里")
         Public_Page.debug_NomalTest(driver, title="使用说明",
-                              MainWait_Element=".modules.main.views.activities.MainActivity",
-                              find_element_id="com.pujitech.pujiejia:id/btn_brand_instruction",
-                              Wait_Element=".modules.help.view.activities.HelpActivity",
-                              check_element_id="com.pujitech.pujiejia:id/tv_title")
+                                    MainWait_Element=".modules.main.views.activities.MainActivity",
+                                    find_element_id="com.pujitech.pujiejia:id/btn_brand_instruction",
+                                    Wait_Element=".modules.help.view.activities.HelpActivity",
+                                    check_element_id="com.pujitech.pujiejia:id/tv_title")

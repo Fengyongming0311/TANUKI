@@ -17,21 +17,31 @@ class MyTorrent:
     def MyTorrent(driver):
         """
         先决条件：进入我家页面
-        :return: Noner
+        :return: None
         """
-        # 点击我的种子进入我的种子页面
-        Public_Page.debug_NomalTest(driver, title="我的种子",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/tv_user_wallet",
-                                    Wait_Element=".modules.bounspoint.activites.BonusPointsDetailActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title")
+        try:
+            # 点击我的种子进入我的种子页面
+            Public_Page.debug_NomalTest(driver, title="我的种子",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/tv_user_wallet",
+                                        Wait_Element=".modules.bounspoint.activites.BonusPointsDetailActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title")
 
-        # 点击大框进入我的种子页面
-        Public_Page.debug_NomalTest(driver, title="我的种子",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/rl_user_wallet_container",
-                                    Wait_Element=".modules.bounspoint.activites.BonusPointsDetailActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title")
+            # 点击大框进入我的种子页面
+            Public_Page.debug_NomalTest(driver, title="我的种子",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/rl_user_wallet_container",
+                                        Wait_Element=".modules.bounspoint.activites.BonusPointsDetailActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title")
+
+            unittest_TestResult = True
+
+        except:
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
+
+
 
     # 我的钱包废弃，改为我的种子了
     def IntoPurse(driver):

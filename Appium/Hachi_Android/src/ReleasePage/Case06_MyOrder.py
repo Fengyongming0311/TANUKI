@@ -18,69 +18,95 @@ class MyOrder:
         先决条件：进入我家页面
         :return: None
         """
-        time.sleep(3)
-        orderNo = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_order_number")[0]
-        print(orderNo)
-        print(orderNo.text)
-        if "订单号" not in orderNo.text:
-            pass
-        else:
-            Public_Page.NomalTest(driver, title="订单详情",
-                                  MainWait_Element=".modules.main.views.activities.MainActivity",
-                                  find_element_id=orderNo,
-                                  Wait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
-                                  check_element_id="com.pujitech.pujiejia:id/tv_title"
-                                  )
+        try:
+            time.sleep(3)
+            orderNo = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_order_number")[0]
+            #[0]取第一个订单
+            print(orderNo)
+            print(orderNo.text)
+            if "订单号" not in orderNo.text:
+                pass
+            else:
+                Public_Page.NomalTest(driver, title="订单详情",
+                                      MainWait_Element=".modules.main.views.activities.MainActivity",
+                                      find_element_id=orderNo,
+                                      Wait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
+                                      check_element_id="com.pujitech.pujiejia:id/tv_title"
+                                      )
+            unittest_TestResult = True
+
+        except:
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
+
 
     def AllOrder(driver):
         """
         先决条件: 进入我家页面
         :return: None
         """
-        time.sleep(2)
-        # 点击全部订单进入我的订单页面
-        Public_Page.debug_NomalTest(driver, title="全部订单",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/ll_all_order_container",
-                                    Wait_Element=".modules.usercenter.order.views.activities.OrderListActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title",
-                                    YESBack=False)
+        try:
+            time.sleep(2)
+            # 点击全部订单进入我的订单页面
+            Public_Page.debug_NomalTest(driver, title="全部订单",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/ll_all_order_container",
+                                        Wait_Element=".modules.usercenter.order.views.activities.OrderListActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                        YESBack=False)
+            unittest_TestResult = True
+        except:
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
 
     def ClickMyOrder(driver):
         """
         进入我的订单页面，脚本执行完成后返回我家页面
         :return: None
         """
-        """
-        订单状态：配送中  待自提  已完成  已退款  已取消  待支付  待受理  已受理  
-        """
-        orderstatus = ['已退款', '已取消', '已完成', '配送中', '待自提', '待支付', '待受理', '已受理']
-        for status in orderstatus:
-            time.sleep(2)
-            order = driver.find_elements_by_id("com.pujitech.pujiejia:id/order_state")  # 取所有订单状态
-            for i in order:
-                if i.text == status:
-                    Public_Page.debug_NomalTest(driver, title="订单详情",
-                                                MainWait_Element=".modules.usercenter.order.views.activities.OrderListActivity",
-                                                find_element_id=i,
-                                                Wait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
-                                                check_element_id="com.pujitech.pujiejia:id/tv_title",
-                                                YESBack=False)
+        try:
+            """
+            订单状态：配送中  待自提  已完成  已退款  已取消  待支付  待受理  已受理  
+            """
+            orderstatus = ['已退款', '已取消', '已完成', '配送中', '待自提', '待支付', '待受理', '已受理']
+            for status in orderstatus:
+                time.sleep(2)
+                order = driver.find_elements_by_id("com.pujitech.pujiejia:id/order_state")  # 取所有订单状态
+                for i in order:
+                    if i.text == status:
+                        Public_Page.debug_NomalTest(driver, title="订单详情",
+                                                    MainWait_Element=".modules.usercenter.order.views.activities.OrderListActivity",
+                                                    find_element_id=i,
+                                                    Wait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
+                                                    check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                                    YESBack=False)
 
-                    Public_Page.debug_NomalTest(driver, title="订单状态跟踪",
-                                                MainWait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
-                                                find_element_id="com.pujitech.pujiejia:id/tv_more_status",
-                                                Wait_Element=".modules.usercenter.order.views.activities.OrderStatusActivity",
-                                                check_element_id="com.pujitech.pujiejia:id/tv_title",
-                                                TestCase=status + "订单")
-                    time.sleep(1)
-                    driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
-                    break
-                else:
-                    continue
+                        Public_Page.debug_NomalTest(driver, title="订单状态跟踪",
+                                                    MainWait_Element=".modules.usercenter.order.views.activities.OrderDetailsActivity",
+                                                    find_element_id="com.pujitech.pujiejia:id/tv_more_status",
+                                                    Wait_Element=".modules.usercenter.order.views.activities.OrderStatusActivity",
+                                                    check_element_id="com.pujitech.pujiejia:id/tv_title",
+                                                    TestCase=status + "订单")
+                        time.sleep(1)
+                        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+                        break
+                    else:
+                        continue
 
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
-        # 返回我家页面
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+            # 返回我家页面
+            unittest_TestResult = True
+        except:
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+            # 返回我家页面
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
+
+
+
         '''
                 orderstatus = {
                     'peisongzhong': "",

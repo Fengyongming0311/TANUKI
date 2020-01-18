@@ -50,14 +50,18 @@ class ShiDiPai:
         """
         try:
             # 测试全部应用(7个+更多)
-            time.sleep(5)
+            time.sleep(3)
             item = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_app_name")
             for dondake in item:
                 case = dondake.text
                 ShiDiPai.Hachilist_app(driver, case)
+            unittest_TestResult = True
         except Exception as e:
             print(e)
+            unittest_TestResult = False
             pass
+        finally:
+            return unittest_TestResult
 
     def Brand_Image(driver):
         """
@@ -76,11 +80,15 @@ class ShiDiPai:
                 driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
 
             print("测试点击%s用例Passed............成功" % case)
+            unittest_TestResult = True
         except:
             print("测试点击%s用例失败............Failed" % case)
             time.sleep(2)
             driver.back()
+            unittest_TestResult = True
             pass
+        finally:
+            return unittest_TestResult
 
     def Zhongshan_Brand_Image(driver):
         """
@@ -206,26 +214,33 @@ class ShiDiPai:
             pass
 
     def ZunXiangFuWu(driver):
-        case = "尊享服务"
-        # 内测的尊享服务现在点进去是度小月商家首页
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_topic_row11").click()
-        time.sleep(3)
-        # 已经进去了   度小月 xpath定位不到，以后可以加个截图或者尝试定位xpath
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+        try:
+            case = "尊享服务"
+            # 内测的尊享服务现在点进去是度小月商家首页
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_topic_row11").click()
+            time.sleep(3)
+            # 已经进去了   度小月 xpath定位不到，以后可以加个截图或者尝试定位xpath
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
 
-        '''
-        doit = '//com.tencent.tbs.core.webkit.WebView/android.view.View/android.view.View[5]'
-        driver.find_element_by_xpath(doit).click()
-        print ("dondake")
-        '''
+            '''
+            doit = '//com.tencent.tbs.core.webkit.WebView/android.view.View/android.view.View[5]'
+            driver.find_element_by_xpath(doit).click()
+            print ("dondake")
+            '''
 
-        time.sleep(3)
-        a = driver.find_element_by_id("com.pujitech.pujiejia:id/ll_topic_root")
-        time.sleep(3)
-        a.find_element_by_xpath("//android.widget.RelativeLayout[2]").click()
-        time.sleep(3)
-        driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
-        print("测试点击%s用例Passed............成功" % case)
+            time.sleep(3)
+            a = driver.find_element_by_id("com.pujitech.pujiejia:id/ll_topic_root")
+            time.sleep(3)
+            a.find_element_by_xpath("//android.widget.RelativeLayout[2]").click()
+            time.sleep(3)
+            driver.find_element_by_id("com.pujitech.pujiejia:id/iv_back").click()
+            print("测试点击%s用例Passed............成功" % case)
+            unittest_TestResult = True
+        except:
+            print("测试点击%s用例Passed............失败" % case)
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult
 
     def ZunXiangFuWu0(driver):
         # (1)测试尊享服务中智能家居是否可以进入
@@ -349,19 +364,23 @@ class ShiDiPai:
         # print ("点击进入各个推荐楼盘点击进入各个推荐楼盘")
         try:
             for case in tuijianbuild:
-                print("这次楼盘名称是：", case)
+                #print("这次楼盘名称是：", case)
                 time.sleep(2)
                 lpan = driver.find_elements_by_id("com.pujitech.pujiejia:id/tv_community_name")
                 for target in lpan:
-                    print("定位元素========：", target.text)
+                    #print("定位元素========：", target.text)
                     if target.text == case:
                         target.click()
                         ShiDiPai.tuijianloupan(driver, case)
                         break
                         # 点完了就跳出循环，否则会再次找寻case内容导致报错
+            unittest_TestResult = True
         except Exception as e:
             print("点击文字推荐楼盘报错信息为:", e)
+            unittest_TestResult = False
             pass
+        finally:
+            return unittest_TestResult
 
     def More_Building(driver):
         """

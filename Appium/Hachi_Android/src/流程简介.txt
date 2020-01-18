@@ -1,0 +1,19 @@
+Center  总流程控制
+→
+unittest   控制每个用例如何执行
+→
+TestPage   测试用例流程代码   每个用例执行流程代码
+→
+ReleasePage 底层模块和功能流程实现代码
+→
+Report  生成报告存放
+
+
+
+
+
+其他：Public
+跑脚本的公共调用模块
+
+
+
