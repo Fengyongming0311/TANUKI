@@ -18,6 +18,7 @@ class MyHome:
         """
         点击我家按钮进入我家页面
         """
+        time.sleep(1)
         Public_Page.Switch_Navigation(driver, tab="我家")
 
     def IntoDengLuPage(driver):
@@ -434,14 +435,14 @@ class MyHome:
             time.sleep(3)
 
             deletebtn = driver.find_elements_by_id("com.pujitech.pujiejia:id/ll_delete")
-            #获取所有地址列表
-            #print (deletebtn[0])
-            #print (deletebtn[1])
-            #print (deletebtn[2])
-            #print (deletebtn[3])
+            # 获取所有地址列表
+            # print (deletebtn[0])
+            # print (deletebtn[1])
+            # print (deletebtn[2])
+            # print (deletebtn[3])
             for i in range(0, cishu):
                 NoTwo = deletebtn[1]
-                #删除第二条数据？？
+                # 删除第二条数据？？
                 NoTwo.click()
                 time.sleep(2)
                 driver.find_element_by_id("com.pujitech.pujiejia:id/tv_confirm").click()
@@ -465,9 +466,18 @@ class MyHome:
         先决条件：进入我家页面
         :return: None
         """
-        print("执行到这里")
-        Public_Page.debug_NomalTest(driver, title="使用说明",
-                                    MainWait_Element=".modules.main.views.activities.MainActivity",
-                                    find_element_id="com.pujitech.pujiejia:id/btn_brand_instruction",
-                                    Wait_Element=".modules.help.view.activities.HelpActivity",
-                                    check_element_id="com.pujitech.pujiejia:id/tv_title")
+        try:
+            time.sleep(2)
+            huadong.shanghua(driver, 300)
+            time.sleep(1)
+            Public_Page.debug_NomalTest(driver, title="使用说明",
+                                        MainWait_Element=".modules.main.views.activities.MainActivity",
+                                        find_element_id="com.pujitech.pujiejia:id/btn_brand_instruction",
+                                        Wait_Element=".modules.help.view.activities.HelpActivity",
+                                        check_element_id="com.pujitech.pujiejia:id/tv_title")
+
+            unittest_TestResult = True
+        except:
+            unittest_TestResult = False
+        finally:
+            return unittest_TestResult

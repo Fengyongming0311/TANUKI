@@ -45,6 +45,7 @@ class Hachi_ShiDiPai(unittest.TestCase):
         # 点击商标图片——实地派会员专享权益（品牌宣传位）
         self.assertTrue(TestResult)
 
+    #@unittest.skip("调试，不执行这条用例")
     def test_ShiDiPai_003ZunXiangFuWu(self):
         """用例名称:实地派首页→测试尊享服务"""
         driver = self.driver
@@ -52,6 +53,7 @@ class Hachi_ShiDiPai(unittest.TestCase):
         # 测试首页尊享服务
         self.assertTrue(TestResult)
 
+    #@unittest.skip("调试，不执行这条用例")
     def test_ShiDiPai_004Recommend_Community_Title(self):
         """用例名称:实地派首页→测试精品楼盘"""
         driver = self.driver

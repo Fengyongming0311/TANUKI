@@ -1,6 +1,6 @@
 # coding:utf-8
 __author__ = 'TANUKI'
-# Appium测试脚本总流程执行开始文件
+# 测试脚本总流程执行开始文件
 import unittest
 import sys
 
@@ -14,22 +14,20 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from email.mime.image import MIMEImage
-
 import os, time, datetime
 
 sys.path.append("../Report/")
 # 测试报告存放路径
-
 sys.path.append("../unittest/")
 listaa = os.chdir("../unittest/")
-
-
+retval = os.getcwd()
+print ("当前工作目录为 %s" % retval)
 # unittest测试脚本存放路径,在不同的文件夹下需要切换目录...
 
 def creatsuitel():
     testunit = unittest.TestSuite()
     # discover 方法定义
-    discover = unittest.defaultTestLoader.discover(listaa,
+    discover = unittest.defaultTestLoader.discover(retval,
                                                    pattern='start_*.py',
                                                    top_level_dir=None)
 
@@ -45,6 +43,7 @@ alltestruns = creatsuitel()
 
 now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
 # 取当前时间
+# filename = 'D:\\selenium_python\\report\\'+now+'result.html'
 filename = "../Report\\" + now + "result.html"
 fp = open(filename, 'wb')
 # 定义报告存放路径
@@ -121,14 +120,13 @@ def sendreport():
         key=lambda fn: os.path.getmtime(result_dir + "\\" + fn) if not os.path.isdir(result_dir + "\\" + fn) else 0)
     # 上句为了找出最新的文件
 
-    print(u"最新测试生成的报告为：" + lists[-1])
+    # print (u"最新测试生成的报告为：" + lists[-1])
     # 找到最新生成的文件
     file_new = os.path.join(result_dir, lists[-1])
 
     # print ("发送的HTML文件名称为：============>", file_new)
 
-    # send_email(file_new)
-    # 要开始发邮件就把这个开关打开
+    send_email(file_new)
 
 
 # 调用发邮件模块,把找到的文件传入send_email方法中

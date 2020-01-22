@@ -15,7 +15,7 @@ sys.path.append("../Report/")
 sys.path.append("../unittest/")
 listaa = os.chdir("../unittest/")
 #unittest测试脚本存放路径,在不同的文件夹下需要切换目录...
-
+print ("listaa",listaa)
 def creatsuitel():
 	testunit = unittest.TestSuite()
 	#discover 方法定义

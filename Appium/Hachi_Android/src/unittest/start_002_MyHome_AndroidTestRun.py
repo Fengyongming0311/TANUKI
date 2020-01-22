@@ -37,7 +37,7 @@ class Hachi_MyHome(unittest.TestCase):
         driver = self.driver
         MyHome.IntoMyHome(driver)
         # 进入我家页面
-        time.sleep(2)
+        time.sleep(3)
         TestResult = MyHome.MyHome_MsgSetting(driver)
         # 测试我的消息、设置、进入个人资料是否正常显示
         self.assertTrue(TestResult)

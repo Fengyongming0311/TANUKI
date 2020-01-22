@@ -180,6 +180,7 @@ class Public_Page:
             if MainWait_Element == None:
                 print("MainWait_Element======", Public_Page.huoquactivity(driver))
             else:
+                time.sleep(2)
                 driver.wait_activity("%s" % MainWait_Element, 30)
                 # 等待我家主界面activity
                 time.sleep(2)
@@ -210,6 +211,7 @@ class Public_Page:
             if Wait_Element == None:
                 print("Wait_Element======", Public_Page.huoquactivity(driver))
             else:
+                time.sleep(2)
                 driver.wait_activity("%s" % Wait_Element, 30)
                 time.sleep(2)
             try:
