@@ -1,0 +1,16 @@
+1. 打开终端
+
+2. 输入 
+sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
+
+sudo rm -fr /Library/PreferencesPanes/JavaControlPanel.prefpane
+sudo rm -fr ~/Library/Application\ Support/Java
+ 
+3  查找当前版本 
+输入：ls /Library/Java/JavaVirtualMachines/ 
+输出：jdk-9.0.1.jdk（你的版本号）
+
+4.输入
+sudo rm -rf /Library/Java/JavaVirtualMachines/你的版本号
+
+卸载完成

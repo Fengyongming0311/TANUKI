@@ -1,0 +1,22 @@
+终端查找java python等环境
+which python
+which java
+
+
+获取最高权限
+su root
+
+查找一个文件的位置 比如说.bash_profile
+find / -name .bash_profile
+
+1.编辑一个文件open -e 文件名
+open -e .bash_profile 
+2.编辑一个文件
+vim filename　　　//打开名为filename的文件
+
+按control + c 保存 然后   :wq
+
+:w               //保存修改至源文件
+:wq              //保存修改并退出
+:q!              //不保存修改，直接退出
+:w filename      //保存修改(选中的部分)至filename(其中filename为不存在重名的新文件)

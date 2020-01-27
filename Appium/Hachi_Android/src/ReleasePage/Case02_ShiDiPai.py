@@ -85,7 +85,7 @@ class ShiDiPai:
             print("测试点击%s用例失败............Failed" % case)
             time.sleep(2)
             driver.back()
-            unittest_TestResult = True
+            unittest_TestResult = False
             pass
         finally:
             return unittest_TestResult
