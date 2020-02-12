@@ -13,8 +13,17 @@ from Case01_IntoShiDiDaZaoShi import IntoShiDiDaZaoShi
 from Case02_SelectRoom import SelectRoom
 from Case03_CommodityTypes import CommodityTypes
 from Case04_Create_Time import Create_Time
+from Case06_AddShoppingCart import AddShoppingCart
 from Case05_Price import Price
-from Case06_GoodsDetail import GoodsDetail
+from Case07_GoodsDetail import GoodsDetail
+
+###
+#尝试自动cmd
+#import subprocess
+#subprocess.Popen('appium', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+#time.sleep(8)
+#没有返回值
+###
 
 
 class Hachi_LinBaO(unittest.TestCase):
@@ -47,7 +56,7 @@ class Hachi_LinBaO(unittest.TestCase):
         self.assertTrue(TestResult)
         #debug:优化时加个，第一个脚本如果跑失败，将不执行接下来的脚本
 
-    #@unittest.skip("调试，不执行这条用例")
+    @unittest.skip("调试，不执行这条用例")
     def test_LinBaO_002SelectRoom(self):
         """用例名称:实地打造师小程序→家电→选择场景测试"""
         driver = self.driver
@@ -55,7 +64,7 @@ class Hachi_LinBaO(unittest.TestCase):
         # 实地打造师小程序→家电→选择场景测试
         self.assertTrue(TestResult)
 
-    #@unittest.skip("调试，不执行这条用例")
+    @unittest.skip("调试，不执行这条用例")
     def test_LinBaO_003CommodityTypes(self):
         """用例名称:实地打造师小程序→家电→选择分类测试"""
         driver = self.driver
@@ -63,14 +72,14 @@ class Hachi_LinBaO(unittest.TestCase):
         # 实地打造师小程序→家电→选择分类测试
         self.assertTrue(TestResult)
 
-    #@unittest.skip("调试，不执行这条用例")
+    @unittest.skip("调试，不执行这条用例")
     def test_LinBaO_004Create_Time(self):
         """用例名称:实地打造师小程序→家电→按照新品排序"""
         driver = self.driver
         TestResult = Create_Time.Create_Time(driver)
         self.assertTrue(TestResult)
 
-    #@unittest.skip("调试，不执行这条用例")
+    @unittest.skip("调试，不执行这条用例")
     def test_LinBaO_005Price(self):
         """用例名称:实地打造师小程序→家电→按照价格排序"""
         driver = self.driver
@@ -78,7 +87,14 @@ class Hachi_LinBaO(unittest.TestCase):
         self.assertTrue(TestResult)
 
     #@unittest.skip("调试，不执行这条用例")
-    def test_LinBaO_006GoodsDetail(self):
+    def test_LinBaO_006AddShoppingCart(self):
+        """用例名称:实地打造师小程序→家电→商品添加购物车"""
+        driver = self.driver
+        TestResult = AddShoppingCart.AddShoppingCart(driver)
+        self.assertTrue(TestResult)
+
+    @unittest.skip("调试，不执行这条用例")
+    def test_LinBaO_007GoodsDetail(self):
         """用例名称:实地打造师小程序→家电→选择价格最高的商品进入商品详情"""
         #依附按照价格排序用例必须执行完成不然定位不到商品
         driver = self.driver
