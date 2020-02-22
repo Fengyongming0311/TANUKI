@@ -8,6 +8,8 @@ self.assertNotEqual(a,b,msg=msg)  #判断a与b是否不一致
 self.assertTrue(a,msg=none)    #判断a是否为True
 self.assertFalse(b,msg=none)   #判断b是否为false
 
+
+Python程序语言指定任何非0和非空(null)值为true,0或者null为 False,所以Python中的 1 代表 True，0代表 False
 ======================================================================
 python 获得对象的所有属性和方法
 描述

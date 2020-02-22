@@ -7,7 +7,7 @@ class GoodsDetail:
     def GoodsDetail(driver):
         try:
             driver.implicitly_wait(10)
-            #print ("开始执行用例6....选择价格最高的商品进入商品详情")
+            #print ("开始执行用例7....进入商品详情")
             time.sleep(3)
             Homepage_all_handles = driver.window_handles
             needhandle = driver.current_window_handle
@@ -30,7 +30,7 @@ class GoodsDetail:
                 time.sleep(3)
                 print ("dondake当前句柄为",i)
                 driver.switch_to_window(i)
-                #print(driver.page_source ,encoding='utf-8')
+                #print(driver.page_source ,encoding='utf-8')这个不对，会报错用下面的c的那个
                 c = (driver.page_source).encode("gbk", 'ignore').decode("gbk", "ignore")
                 print (c)
                 #当时为了验证页面元素在哪个handle里，便打印了所有的handle下的page_source,最终找到了

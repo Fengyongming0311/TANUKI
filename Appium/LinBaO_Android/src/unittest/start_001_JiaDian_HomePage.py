@@ -13,8 +13,8 @@ from Case01_IntoShiDiDaZaoShi import IntoShiDiDaZaoShi
 from Case02_SelectRoom import SelectRoom
 from Case03_CommodityTypes import CommodityTypes
 from Case04_Create_Time import Create_Time
-from Case06_AddShoppingCart import AddShoppingCart
 from Case05_Price import Price
+from Case06_AddShoppingCart import AddShoppingCart
 from Case07_GoodsDetail import GoodsDetail
 
 ###
@@ -39,9 +39,11 @@ class Hachi_LinBaO(unittest.TestCase):
             'appActivity': 'com.tencent.mm.ui.LauncherUI',
             # 'appActivity': '.ui.LauncherUI',
             'noSign': True,
-            #'skipServerInstallation': True,
-            #'skipDeviceInitialization': True,
+            'skipServerInstallation': True,
+            'skipDeviceInitialization': True,
             'recreateChromeDriverSessions': True,
+            #'chromedriverExcutable':"C:\\Users\\TANUKI\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\_appium-chromedriver@4.20.2@appium-chromedriver\\chromedriver\\win\\chromedriver_2.40.exe",
+            #vivoX9手机直接指定chromedrvier位置
             'chromeOptions': {'androidProcess': 'com.tencent.mm:appbrand0'},
             'nativeWebScreenshot': True,
         }
@@ -93,13 +95,15 @@ class Hachi_LinBaO(unittest.TestCase):
         TestResult = AddShoppingCart.AddShoppingCart(driver)
         self.assertTrue(TestResult)
 
-    #@unittest.skip("调试，不执行这条用例")
+    '''
+    @unittest.skip("调试，不执行这条用例")
     def test_LinBaO_007GoodsDetail(self):
         """用例名称:实地打造师小程序→家电→选择价格最高的商品进入商品详情"""
         #依附按照价格排序用例必须执行完成不然定位不到商品
         driver = self.driver
         TestResult = GoodsDetail.GoodsDetail(driver)
         self.assertTrue(TestResult)
+    '''
 
     @classmethod
     def tearDownClass(dondake):

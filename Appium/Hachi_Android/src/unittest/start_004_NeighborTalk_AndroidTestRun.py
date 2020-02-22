@@ -20,6 +20,7 @@ class Hachi_NeighborTalk(unittest.TestCase):
             'automationName': "uiautomator2",
             'noReset': True,
             'deviceName': 'huawei-duk-al20-FFK0217609003306',
+            #'deviceName': 'vivo-vivo_x9-be1bd33f',
             'appPackage': 'com.pujitech.pujiejia',
             'appActivity': 'com.pujitech.pujiejia.modules.splash.views.activities.SplashActivity',
             'noSign': True,

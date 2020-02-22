@@ -21,7 +21,7 @@ sys.path.append("../Report/")
 sys.path.append("../unittest/")
 listaa = os.chdir("../unittest/")
 retval = os.getcwd()
-print ("当前工作目录为 %s" % retval)
+#print ("当前工作目录为 %s" % retval)
 # unittest测试脚本存放路径,在不同的文件夹下需要切换目录...
 
 def creatsuitel():

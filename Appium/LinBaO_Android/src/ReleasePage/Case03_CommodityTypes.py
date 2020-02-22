@@ -25,7 +25,7 @@ class CommodityTypes:
             #//*[@id="goods_scenes_0"]/wx-view[1]/wx-view
             #//*[@id="goods_categories_0"]/wx-view[1]/wx-view
             #print ("验证选择的场景文本===============：",check.text)
-            if check.text == "电视":
+            if check.text == "平板电视":
                 time.sleep(2)
                 driver.find_element_by_xpath('//*[@id="goods_categories_0"]/wx-view[1]/wx-view').click()
                 # //*[@id="goods_categories_0"]/wx-view[1]/wx-view

@@ -6,8 +6,8 @@ sys.path.append("..")
 import huadong
 
 
-class IntoShiDiDaZaoShi:
-    def IntoShiDiDaZaoShi(driver):
+class Into_JiaSi:
+    def Into_JiaSi(driver):
         # 从微信进入到实地打造师小程序中
         try:
             driver.wait_activity(".ui.LauncherUI", 30)
@@ -53,17 +53,6 @@ class IntoShiDiDaZaoShi:
             # time.sleep(5)
             # print(driver.page_source)
 
-            #滑动查看商品列表是否正常显示，以后如果报错拆分成两个脚本
-            for i in range(1,14):
-                #print ("第",i,"次滑动")
-                time.sleep(1)
-                huadong.shanghua(driver,500)
-
-            for i in range(1,8):
-                time.sleep(1)
-                huadong.xiahua(driver,250)
-
-
             # driver.switch_to.context('WEBVIEW_com.tencent.mm:appbrand2')
             # driver.switch_to.context('WEBVIEW_com.tencent.mm')
             # driver.switch_to.context('WEBVIEW_com.tencent.mm:appbrand0')
@@ -85,7 +74,7 @@ class IntoShiDiDaZaoShi:
             # print("all_handles所有句柄为：", all_handles)
             # time.sleep(2)
             needhandle = driver.current_window_handle
-            # print("needhandle,", needhandle)
+            #print("needhandle,", needhandle)
             time.sleep(3)
             #debug：这块偶尔会报错，以后优化一下
             for i in all_handles:
@@ -100,9 +89,7 @@ class IntoShiDiDaZaoShi:
             # print("测试点击网页")
             time.sleep(3)
             driver.find_element_by_xpath("//*[@id=\"63\"]/wx-text/span[2]").click()
-            #点击家私然后再点击家电验证是否进入了页面
-            time.sleep(3)
-            driver.find_element_by_xpath("//*[@id=\"62\"]/wx-text/span[2]").click()
+            #点击家私进入家私页面
             unittest_TestResult = True
         except Exception as e:
             print("进入实地打造师报错信息==========:", e)

@@ -11,6 +11,7 @@ sys.path.append("..")
 
 ############################################
 class SelectRoom:
+    #选择家电场景
     def SelectRoom(driver):
         try:
             driver.implicitly_wait(10)
