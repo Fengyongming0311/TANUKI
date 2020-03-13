@@ -513,7 +513,7 @@ class ShiDiPai:
         elif case == u"智能家居":
             try:
                 driver.find_element_by_android_uiautomator('new UiSelector().text("%s")' % case).click()
-                time.sleep(6)
+                time.sleep(30)
 
                 checkpoint = driver.find_element_by_id("com.pujitech.pujiejia:id/tv_base_title")
                 if checkpoint.text == "我的网关":

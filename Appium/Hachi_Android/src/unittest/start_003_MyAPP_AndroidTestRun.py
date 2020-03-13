@@ -1,4 +1,4 @@
-##coding=utf-8
+#coding=utf-8
 __author__ = 'TANUKI'
 '''
 Public_Page.debug_NomalTest 需要加返回值，返回0 或者1 或者True 或者false 要不脚本无法判断成功失败

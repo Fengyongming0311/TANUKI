@@ -9,19 +9,18 @@ import os, time
 
 sys.path.append("../ReleasePage")
 # from 文件名 import Class名
-from Case10_IntoJiaSi import Into_JiaSi
-from Case16_JiaSi_GoodsDetail import JiaSiGoodsDetail
-from Case08_LookGoods import LookGoods
-from Case17_JiaSiDetailAddShoppingCart import JiaSiDetailAddShoppingCart
+from Case30_IntoWoDe import Into_WoDe
+from Case31_WoDe_IntoUserInfo import IntoUserInfo
+from Case32_UserInfo_ChangeUserName import ChangeUserName
 
 
-class JiaSi_XiangQing(unittest.TestCase):
+class WoDe_UserInfo(unittest.TestCase):
     @classmethod
     def setUpClass(dondake):
         desired_caps = {
             'platformName': 'Android',
             'automationName': "Appium",
-            # 'automationName': 'UIAutomator2',
+            #'automationName': 'UIAutomator2',
             'noReset': True,
             'deviceName': 'huawei-duk-al20-FFK0217609003306',
             'appPackage': 'com.tencent.mm',
@@ -39,31 +38,29 @@ class JiaSi_XiangQing(unittest.TestCase):
         dondake.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         time.sleep(3)
 
-    # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_001IntoJiaSi(self):
-        """用例名称:从微信进入实地打造师微信小程序→进入家私页面"""
+    #@unittest.skip("调试，不执行这条用例")
+    def test_WoDe_001IntoWoDe(self):
+        """用例名称:从微信进入实地打造师微信小程序→进入我的页面"""
         driver = self.driver
-        TestResult = Into_JiaSi.Into_JiaSi(driver)
+        TestResult = Into_WoDe.Into_WoDe(driver)
         self.assertTrue(TestResult)
-        # print("进入家私页面测试用例执行完毕")
+        # print("进入我的页面测试用例执行完毕")
 
-    # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_002JiaSiGoodsDetail(self):
-        """用例名称:实地打造师小程序→家私→选择价格最高的商品进入商品详情"""
+    #@unittest.skip("调试，不执行这条用例")
+    def test_WoDe_002IntoUserInfo(self):
+        """用例名称:实地打造师小程序→我的→进入用户信息页面"""
         driver = self.driver
-        TestResult = JiaSiGoodsDetail.JiaSiGoodsDetail(driver)
+        TestResult = IntoUserInfo.IntoUserInfo(driver)
+        # 实地打造师小程序→我的→进入用户信息页面
         self.assertTrue(TestResult)
+        # print ("选择场景测试用例执行完毕")
 
-    def test_JiaSi_003JiaSiLookGoods(self):
-        """用例名称：家私商品详情页面，滑动查看商品内容"""
+    #@unittest.skip("调试，不执行这条用例")
+    def test_WoDe_003ChangeUserName(self):
+        """用例名称:实地打造师小程序→我的→进入用户信息页面→点击昵称进入昵称修改页面→修改昵称"""
         driver = self.driver
-        TestResult = LookGoods.LookGoods(driver)
-        self.assertTrue(TestResult)
-
-    def test_JiaSi_004JiaSiDetailAddShoppingCart(self):
-        """用例名称：家私商品详情页面，商品添加购物车"""
-        driver = self.driver
-        TestResult = JiaSiDetailAddShoppingCart.JiaSiDetailAddShoppingCart(driver, switch=1)
+        TestResult = ChangeUserName.ChangeUserName(driver)
+        #实地打造师小程序→我的→进入用户信息页面→点击昵称进入昵称修改页面→修改昵称
         self.assertTrue(TestResult)
 
     @classmethod

@@ -8,6 +8,8 @@ class Create_Time:
         try:
             driver.implicitly_wait(10)
             #print ("开始执行用例4....按照新品排序")
+            time.sleep(3)
+
             driver.find_element_by_css_selector("wx-view[data-sortname=\"create_time\"][data-type=\"time\"]").click()
             #点击新品按照新品排序
             #debug:这里应该加入截图功能

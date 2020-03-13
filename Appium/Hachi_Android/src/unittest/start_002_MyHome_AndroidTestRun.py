@@ -1,4 +1,4 @@
-##coding=utf-8
+#coding=utf-8
 __author__ = 'TANUKI'
 
 import unittest, time, re, sys

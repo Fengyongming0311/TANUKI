@@ -1,4 +1,4 @@
-##coding=utf-8
+# coding=utf-8
 __author__ = 'TANUKI'
 
 import unittest, time, re, sys
@@ -15,7 +15,7 @@ from Case08_LookGoods import LookGoods
 from Case09_DetailAddShoppingCart import DetailAddShoppingCart
 
 
-class Hachi_LinBaO(unittest.TestCase):
+class JiaDian_XiangQing(unittest.TestCase):
     @classmethod
     def setUpClass(dondake):
         desired_caps = {
@@ -31,23 +31,23 @@ class Hachi_LinBaO(unittest.TestCase):
             'skipServerInstallation': True,
             'skipDeviceInitialization': True,
             'recreateChromeDriverSessions': True,
-            #'chromedriverExcutable':"C:\\Users\\TANUKI\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\_appium-chromedriver@4.20.2@appium-chromedriver\\chromedriver\\win\\chromedriver_2.40.exe",
-            #vivoX9手机直接指定chromedrvier位置
+            # 'chromedriverExcutable':"C:\\Users\\TANUKI\\AppData\\Roaming\\npm\\node_modules\\appium\\node_modules\\_appium-chromedriver@4.20.2@appium-chromedriver\\chromedriver\\win\\chromedriver_2.40.exe",
+            # vivoX9手机直接指定chromedrvier位置
             'chromeOptions': {'androidProcess': 'com.tencent.mm:appbrand0'},
             'nativeWebScreenshot': True,
         }
         dondake.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
         time.sleep(3)
 
-    #@unittest.skip("调试，不执行这条用例")
+    # @unittest.skip("调试，不执行这条用例")
     def test_JiaDian_001IntoJiaDian(self):
         """用例名称:从微信进入实地打造师微信小程序家电首页"""
         driver = self.driver
         TestResult = IntoShiDiDaZaoShi.IntoShiDiDaZaoShi(driver)
         self.assertTrue(TestResult)
-        #debug:优化时加个，第一个脚本如果跑失败，将不执行接下来的脚本
+        # debug:优化时加个，第一个脚本如果跑失败，将不执行接下来的脚本
 
-    #@unittest.skip("调试，不执行这条用例")
+    # @unittest.skip("调试，不执行这条用例")
     def test_JiaDian_002GoodsDetail(self):
         """用例名称:实地打造师小程序→家电→选择价格最高的商品进入商品详情"""
         driver = self.driver
@@ -63,7 +63,7 @@ class Hachi_LinBaO(unittest.TestCase):
     def test_JiaDian_004DetailAddShoppingCart(self):
         """用例名称：商品详情页面，商品添加购物车"""
         driver = self.driver
-        TestResult = DetailAddShoppingCart.DetailAddShoppingCart(driver,switch = 1)
+        TestResult = DetailAddShoppingCart.DetailAddShoppingCart(driver, switch=1)
         self.assertTrue(TestResult)
 
     @classmethod

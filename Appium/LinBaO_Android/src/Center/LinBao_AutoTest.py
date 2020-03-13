@@ -49,7 +49,7 @@ fp = open(filename, 'wb')
 # 定义报告存放路径
 runner = HTMLTestReportCN.HTMLTestRunner(
     stream=fp,
-    title=u"安卓哈奇APP自动化测试报告",
+    title=u"安卓拎包入住小程序自动化测试报告",
     description=u"自动化测试用例执行情况",
     tester='冯泳铭')
 
@@ -65,7 +65,7 @@ def send_email(file_new):
     # 多个接收邮箱，单个收件人的话，直接是receiver='XXX@126.com'
     receiver = ['fengyongming@hachismart.com', 'fengyongming0311@sohu.com']
     # 发送邮件主题
-    subject = now + '安卓哈奇APP执行自动化测试报告邮件'
+    subject = now + '安卓拎包入住小程序执行自动化测试报告邮件'
     mailfrom = now + '自动化测试结果邮件<fengyongming0311@sohu.com>'
     # 这里填写邮件发送自XXXXXXXXXXXXXXXX
 

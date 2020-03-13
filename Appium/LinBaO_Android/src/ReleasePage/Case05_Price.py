@@ -8,6 +8,7 @@ class Price:
         try:
             driver.implicitly_wait(10)
             #print ("开始执行用例5....按照价格排序")
+            time.sleep(3)
             driver.find_element_by_css_selector("wx-view[data-sortname=\"price\"][data-type=\"price\"]").click()
             #点击价格按照价格排序
             #debug:这里应该加入截图功能

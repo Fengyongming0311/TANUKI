@@ -9,16 +9,16 @@ import os, time
 
 sys.path.append("../ReleasePage")
 # from 文件名 import Class名
-from Case10_IntoJiaSi import Into_JiaSi
-from Case11_JiaSi_SelectScene import JiaSiSelectScene
-from Case12_JiaSi_CommodityTypes import JiaSiCommodityTypes
+from Case18_IntoZhiNeng import Into_ZhiNeng
+from Case19_ZhiNeng_SelectScene import ZhiNengSelectScene
+from Case20_ZhiNeng_CommodityTypes import ZhiNengCommodityTypes
 
-from Case13_JiaSi_Create_Time import JiaSiCreate_Time
-from Case14_JiaSi_Price import JiaSiPrice
-from Case15_JiaSi_AddShoppingCart import JiaSiAddShoppingCart
+from Case21_ZhiNeng_Create_Time import ZhiNengCreate_Time
+from Case22_ZhiNeng_Price import ZhiNengPrice
+from Case23_ZhiNeng_AddShoppingCart import ZhiNengAddShoppingCart
 
 
-class JiaSi_HomePage(unittest.TestCase):
+class ZhiNeng_HomePage(unittest.TestCase):
     @classmethod
     def setUpClass(dondake):
         desired_caps = {
@@ -43,50 +43,50 @@ class JiaSi_HomePage(unittest.TestCase):
         time.sleep(3)
 
     # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_001IntoJiaSi(self):
-        """用例名称:从微信进入实地打造师微信小程序→进入家私页面"""
+    def test_ZhiNeng_001IntoZhiNeng(self):
+        """用例名称:从微信进入实地打造师微信小程序→进入智能页面"""
         driver = self.driver
-        TestResult = Into_JiaSi.Into_JiaSi(driver)
+        TestResult = Into_ZhiNeng.Into_ZhiNeng(driver)
         self.assertTrue(TestResult)
-        # print("进入家私页面测试用例执行完毕")
+        # print("进入智能页面测试用例执行完毕")
 
     # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_002JiaSiSelectScene(self):
-        """用例名称:实地打造师小程序→家私→选择场景测试"""
+    def test_ZhiNeng_002ZhiNengSelectScene(self):
+        """用例名称:实地打造师小程序→智能→选择场景测试"""
         driver = self.driver
-        TestResult = JiaSiSelectScene.JiaSiSelectScene(driver)
-        # 实地打造师小程序→家私→选择场景测试
+        TestResult = ZhiNengSelectScene.ZhiNengSelectScene(driver)
+        # 实地打造师小程序→智能→选择场景测试
         self.assertTrue(TestResult)
-        # print ("选择场景测试用例执行完毕")
+        # print ("选择智能场景测试用例执行完毕")
 
     # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_003JiaSiCommodityTypes(self):
-        """用例名称:实地打造师小程序→家私→选择分类测试"""
-        print("开始执行脚本家私选择分类")
+    def test_ZhiNeng_003JiaSiCommodityTypes(self):
+        """用例名称:实地打造师小程序→智能→选择分类测试"""
+        print("开始执行脚本智能选择分类")
         driver = self.driver
-        TestResult = JiaSiCommodityTypes.JiaSiCommodityTypes(driver)
-        # 实地打造师小程序→家私→选择分类测试
-        self.assertTrue(TestResult)
-
-    # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_004JiaSiCreate_Time(self):
-        """用例名称:实地打造师小程序→家私→按照新品排序"""
-        driver = self.driver
-        TestResult = JiaSiCreate_Time.JiaSiCreate_Time(driver)
+        TestResult = ZhiNengCommodityTypes.ZhiNengCommodityTypes(driver)
+        # 实地打造师小程序→智能→选择分类测试
         self.assertTrue(TestResult)
 
     # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_005JiaSiPrice(self):
-        """用例名称:实地打造师小程序→家私→按照价格排序"""
+    def test_ZhiNeng_004ZhiNengCreate_Time(self):
+        """用例名称:实地打造师小程序→智能→按照新品排序"""
         driver = self.driver
-        TestResult = JiaSiPrice.JiaSiPrice(driver)
+        TestResult = ZhiNengCreate_Time.ZhiNengCreate_Time(driver)
         self.assertTrue(TestResult)
 
     # @unittest.skip("调试，不执行这条用例")
-    def test_JiaSi_006JiaSiAddShoppingCart(self):
-        """用例名称:实地打造师小程序→家私→商品添加购物车"""
+    def test_ZhiNeng_005ZhiNengPrice(self):
+        """用例名称:实地打造师小程序→智能→按照价格排序"""
         driver = self.driver
-        TestResult = JiaSiAddShoppingCart.JiaSiAddShoppingCart(driver)
+        TestResult = ZhiNengPrice.ZhiNengPrice(driver)
+        self.assertTrue(TestResult)
+
+    # @unittest.skip("调试，不执行这条用例")
+    def test_ZhiNeng_006ZhiNengAddShoppingCart(self):
+        """用例名称:实地打造师小程序→智能→商品添加购物车"""
+        driver = self.driver
+        TestResult = ZhiNengAddShoppingCart.ZhiNengAddShoppingCart(driver)
         self.assertTrue(TestResult)
 
     @classmethod
