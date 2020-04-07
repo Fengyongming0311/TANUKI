@@ -49,7 +49,8 @@ def firstname():
 
 def run(_cishu):
 	#xing = firstname()
-	xing = "莫"
+	xing = "刘"
+	#姓啥这里就写啥
 	ming = random.sample(lastname(), _cishu)
 
 	for loop in range(_cishu):
