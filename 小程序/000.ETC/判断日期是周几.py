@@ -16,6 +16,6 @@ def get_week_day(date):
 	return week_day_dict[day]
 
 
-date = '2018/05/03'
+date = '2020/05/09'
 
 print (get_week_day(date))
