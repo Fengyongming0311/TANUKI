@@ -64,6 +64,45 @@ def youhua(driver, t):
 
 	driver.swipe(x1,y1,x2,y1,t)
 
+def custom(driver, _x1, _y1, _x2, _y2, move, t):
+	"""
+	:param driver: driver
+	:param _x1: x1坐标
+	:param _y1: y1坐标
+	:param _x2: x2坐标
+	:param _y2: y2坐标
+	:param move: 方向
+	:param t: 滑动距离
+	:return:  无
+	"""
+	l = getSize(driver)
+
+	x1 = int(l[0] * _x1)
+
+	y1 = int(l[1] * _y1)
+
+	x2 = int(l[0] * _x2)
+
+	y2 = int(l[1] * _y2)
+
+	if move == 'shang':
+		print ("执行上滑")
+		driver.swipe(x1, y1, x1, y2,t)
+
+	elif move == 'xia':
+		driver.swipe(x1, y1, x1, y2,t)
+
+	elif move == 'zuo':
+		driver.swipe(x1,y1,x2,y1,t)
+
+	elif move == 'you':
+		driver.swipe(x1,y1,x2,y1,t)
+
+
+
+
+	
+
 
 '''
 #调用向左滑动  5为持续时间

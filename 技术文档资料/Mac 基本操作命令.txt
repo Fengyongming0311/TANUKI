@@ -20,3 +20,7 @@ vim filename　　　//打开名为filename的文件
 :wq              //保存修改并退出
 :q!              //不保存修改，直接退出
 :w filename      //保存修改(选中的部分)至filename(其中filename为不存在重名的新文件)
+
+
+Mac显示隐藏的文件夹命令
+defaults write com.apple.finder AppleShowAllFiles -bool true
