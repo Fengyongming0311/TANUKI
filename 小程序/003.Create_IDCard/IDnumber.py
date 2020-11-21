@@ -151,10 +151,28 @@ def IDnumber(_count):
 	return _IDnumber
 
 
+#格式化显示身份证号110102     19890311     1554 
+def FormatID_Card(ID_Card):
+	a = ID_Card[:6]
+	b = ID_Card[6:14]
+	c = ID_Card[14:]
+	
+	#print (a)
+	#print (b)
+	#print (c)
+	New_ID_Card = a + "     " + b + "     " + c 
+	return New_ID_Card
 
 
-def run(_loop):
-	for i in range (_loop):
-		count = head() + beath() + randomNO() + sex()
-		cardID = IDnumber(count)
-		print (cardID)
+#最终生成身份证
+#传入DisplayType：展示类型，如果传入1就是正常显示，如果传入2就是分开显示身份证号
+def ID_Card(DisplayType):
+	count = head() + beath() + randomNO() + sex()
+	#身份证号组合在一起？
+	ID_Card = IDnumber(count)
+	if DisplayType == 1:
+		return ID_Card
+	else:
+		#格式化的身份证
+		New_ID_Card = FormatID_Card(ID_Card)
+		return New_ID_Card
