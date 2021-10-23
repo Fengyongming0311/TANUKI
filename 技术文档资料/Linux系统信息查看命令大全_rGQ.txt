@@ -163,3 +163,14 @@
 
     九.其他类
     1.显示显卡3D信息：glxinfo和glxgears
+
+
+
+
+查看日志
+进入目录
+查看日志tail -f 地址  
+tail -f sales-project-external-provider.log 
+
+查看关键字日志  -C 5是前后5行
+grep -C 5 "常润莎" pof-manage-service-provider.log

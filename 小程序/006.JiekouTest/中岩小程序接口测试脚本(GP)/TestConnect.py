@@ -12,22 +12,22 @@ season:             使用季节
 biyaochengdu:       必要程度
 guanlian:           关联产品
 """
-conn = pymysql.connect(host='127.0.0.1', user='root', passwd='000000', db='tanuki', charset='utf8')  # 连接数据库
+conn = pymysql.connect(host='127.0.0.1', user='root', passwd='00000000', db='mydata', charset='utf8')  # 连接数据库
 cur = conn.cursor()  # 使用cursor()方法获取操作游标
 
 # 增加数据
-"""
+
 cur.execute(
     "INSERT INTO lifeneed(name, type, useshiduan, usepinlv, season, biyaochengdu, guanlian, beizhu) \
     VALUES('袜子', '衣物', '每天', '高', '秋冬', '高', '', '目前建议每天换一次')"
     )
     #插入单条数据
 conn.commit()  # 没有这个无法真正提交数据
-"""
+
 
 
 #查询出数据
-selectall = "select * from ceshi"
+selectall = "select * from lifeneed"
 cur.execute(selectall)
 alldata = cur.fetchall()
 # 如果有数据返回，就全部输出

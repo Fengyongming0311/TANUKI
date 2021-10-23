@@ -3,7 +3,6 @@ __author__ = 'TANUKI'
 import time, sys
 import allure
 sys.path.append("..")
-import huadong
 from selenium.webdriver.support.ui import WebDriverWait
 
 
@@ -26,9 +25,4 @@ class IntoSiMuXiaoShou:
         finally:
             return pytest_TestResult
 
-
-    def ShowPage2(driver):
-        time.sleep(2)
-        with allure.step('我的页面上滑，显示交易明细等其他'):
-            huadong.shanghua(driver,500)
 

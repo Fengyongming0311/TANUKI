@@ -235,6 +235,6 @@ def WriteExcel(filename):
 
 
 
-filename = "银行23.xlsx"
+filename = "查开户行开户城市V2.xlsx"
 #这里填写要读取的Excel名称，粘贴全名进来【必须带双引号】
 WriteExcel(filename)

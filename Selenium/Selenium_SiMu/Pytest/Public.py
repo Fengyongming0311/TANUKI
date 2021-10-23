@@ -7,6 +7,7 @@ import subprocess
 
 class Driver:
     driver = None
+	#下面这个不是我写的，不太懂啥意思 到return o结束
     #xml_report_path = ''  # 报告路径
     #html_report_path = ''
 

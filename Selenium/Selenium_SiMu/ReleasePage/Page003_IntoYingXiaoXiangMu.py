@@ -12,6 +12,20 @@ class IntoYingXiaoXiangMu:
     def IntoYingXiaoXiangMu(driver):
         #进入销售管理——营销项目
         try:
+            time.sleep(5)
+            #这里需要切换句柄
+
+            nowwindow1 = driver.current_window_handle
+            allwindows = driver.window_handles
+            #print ("这个有可能是新窗口的页面句柄",nowwindow1)
+            #获取所有窗口
+            #print (allwindows)
+            #print ("================================================")
+            for smap in allwindows:
+                #print(smap)
+                if smap != nowwindow1:
+                    driver.switch_to_window(smap)
+
             with allure.step('进入销售管理——营销项目'):
                 WebDriverWait(driver, 60).until(lambda x: x.find_element_by_css_selector("a[id=\"projectList\"][class=\"menu_link\"]"))
                 driver.find_element_by_css_selector("a[id=\"projectList\"][class=\"menu_link\"]").click()
@@ -23,15 +37,3 @@ class IntoYingXiaoXiangMu:
         finally:
             return pytest_TestResult
 
-
-
-
-    def IntoSetting_CheckPoint(driver):
-        time.sleep(2)
-        with allure.step('验证标题是否为设置'):
-            check = Page.find_elem_id(driver,"com.chtwm.mall:id/tv_title")
-        if check.text == "设置":
-            pytest_TestResult = True
-        else:
-            pytest_TestResult = False
-        return pytest_TestResult
