@@ -20,6 +20,8 @@
 pip(3) install pycryptodomex mutagen
 ```
 
+pip install pycryptodomex
+pip install mutagen
 ## 使用
 
 运行GUI即可打开可视化界面
