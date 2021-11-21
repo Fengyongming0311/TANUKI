@@ -95,3 +95,11 @@ pop(key[,default])
 popitem()
 返回并删除字典中的最后一对键和值。
 """
+
+
+'''
+#判断字典里是否有这个key值
+d = {'name':'Tom', 'age':10, 'Tel':13466738904}
+if 'name' in d.keys():
+	print (d['name'])
+'''

@@ -5,12 +5,12 @@ import time
 
 class Clean_Data:
 
-	def Clean_Data_sina(Number):
-		everydata = Base_StockInterface.Stock_sinajs(Number)
+	def Clean_Data_sina(number):
+		everydata = Base_StockInterface.Stock_sinajs(number)
 		dict = {}
 		dict['stockname'] = everydata[0].split("=\"")[1].replace(" ","")
 		#股票名字
-		dict['stockcode'] = Number
+		dict['stockcode'] = number
 		#股票代码
 		dict['today_kaipanjia'] = everydata[1]
 		#今日开盘价
@@ -74,8 +74,8 @@ class Clean_Data:
 		print (time)
 		"""
 
-	def Clean_Data_gtimgHK(Number):
-		alldata = Base_StockInterface.Stock_gtimg_HK(Number)
+	def Clean_Data_gtimgHK(number):
+		alldata = Base_StockInterface.Stock_gtimg_HK(number)
 		dict = {}
 		dict['stockname'] = alldata[1].replace(" ","")
 		#股票名字

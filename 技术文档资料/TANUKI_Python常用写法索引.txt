@@ -1,0 +1,8 @@
+写log日志： 书P113
+
+获取当前时间并以XX格式显示:
+now = time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+
+
+发送邮件摒弃了之前的，改用
+C:\TANUKI\小程序\006.JiekouTest\Stock_Prices\Notify_Email.py 中的send_email
