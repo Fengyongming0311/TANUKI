@@ -29,7 +29,7 @@ def send_email(*args, **kwargs):
     #邮件内容
     if 'msg' in kwargs.keys():
         email_content = kwargs['msg']
-        print ("发送邮件内容： \n",kwargs['msg'])
+        #print ("发送邮件内容： \n",kwargs['msg'])
     else:
         email_content = """emmmm,没有找到传入的内容值，这里什么也没有..."""
 
