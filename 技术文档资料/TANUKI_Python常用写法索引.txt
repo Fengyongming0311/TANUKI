@@ -2,7 +2,13 @@
 
 获取当前时间并以XX格式显示:
 now = time.strftime("%Y-%m-%d-%H_%M_%S",time.localtime(time.time()))
+时间转化和时间相加减
+C:\TANUKI\Zero_Python\其他知识\时间格式转换和时间相减.py
 
 
 发送邮件摒弃了之前的，改用
 C:\TANUKI\小程序\006.JiekouTest\Stock_Prices\Notify_Email.py 中的send_email
+
+
+判断列表和字符串和字典等是否为空
+ 在Python中，None、空列表[]、空字典{}、空元组()、0等一系列代表空和无的对象会被转换成False。除此之外的其它对象都会被转化成True。

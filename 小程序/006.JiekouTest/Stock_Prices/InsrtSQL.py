@@ -2,7 +2,7 @@
 
 import pymysql
 import os, sys, string
-import time
+import time,datetime
 
 class sqlcontrol:
 	"""
@@ -62,11 +62,34 @@ class sqlcontrol:
 			print (SPtips)
 			print ("########################################")
 			'''
-			stockbaseinsert(stockcode, stockname, lowprice, lowprice_date, high_price, highprice_date)
+			sqlcontrol.stockbaseinsert(stockcode, stockname, lowprice, lowprice_date, high_price, highprice_date)
 
-			gradeinsert(stockcode, stockname, grade, industry, keyword, business_scope, core, FYMtips, SPtips)
+			sqlcontrol.gradeinsert(stockcode, stockname, grade, industry, keyword, business_scope, core, FYMtips, SPtips)
 
+	def selectsql(*args, **kwargs):
+		conn = pymysql.connect(host='127.0.0.1', user='root', passwd='000000', db='stockmain', charset='utf8')  # 连接数据库
+		cur = conn.cursor()  # 使用cursor()方法获取操作游标
+		if args:
+			stockcode = args[0]
+			selectstock = "SELECT * from stockbase where stockcode = %s"%stockcode
+			cur.execute(selectstock)
+			#查询数据库
+			dondake = cur.fetchall()
+			#获取所有的返回值
+		else:
+			selectstock = "SELECT * from stockbase"
+			cur.execute(selectstock)
+			#查询数据库
+			dondake = cur.fetchall()
+			#获取所有的返回值
 
+		cur.close()
+		#关闭游标
+		conn.commit()
+		#没有这个无法真正提交数据
+		conn.close()
+		#下，返回所有数据
+		return dondake
 
 	def stockbaseinsert(stockcode,stockname,lowprice,lowprice_date, high_price, highprice_date):
 		try:
@@ -99,11 +122,12 @@ class sqlcontrol:
 			cur = conn.cursor()  # 使用cursor()方法获取操作游标
 			#print (dondake)
 			#print (type(dondake))
+			now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 			if dondake == "low":
-				stockbaseupdate = "UPDATE stockbase SET `low_price` =\'%s\', `lowprice_date` =\'%s\' WHERE `stockcode`= \'%s\';" % (price, price_date, stockcode)
+				stockbaseupdate = "UPDATE stockbase SET `low_price` =\'%s\', `lowprice_date` =\'%s\', `updatetime` =\'%s\' WHERE `stockcode`= \'%s\';" % (price, price_date, now, stockcode)
 				#插入表stockbase
 			elif dondake == "high":
-				stockbaseupdate = "UPDATE stockbase SET `high_price` =\'%s\', `highprice_date` =\'%s\' WHERE `stockcode`= \'%s\';" % (price, price_date, stockcode)
+				stockbaseupdate = "UPDATE stockbase SET `high_price` =\'%s\', `highprice_date` =\'%s\', `updatetime` =\'%s\' WHERE `stockcode`= \'%s\';" % (price, price_date, now, stockcode)
 
 			cur.execute(stockbaseupdate)
 			#插入单条数据

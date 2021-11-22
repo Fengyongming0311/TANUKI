@@ -14,66 +14,65 @@ Stock_Interface_HK    是第三个HK
 深交所股票分为三类：以000，001 开头的是深圳主板，以002开头的为中小板;以300开头的为创业板。
 """
 
+class Base_StockInterface:
+	def Stock_sinajs(stockcode):
+		# urllib3.disable_warnings()
+
+		if int(stockcode[0]) > 3:
+			url = "http://hq.sinajs.cn/list=sh"+"%s"%stockcode
+		else:
+			url = "http://hq.sinajs.cn/list=sz"+"%s"%stockcode
+		requests.packages.urllib3.disable_warnings()
+		response = requests.get(url, verify=False)
+		#print("DonDaKe",response.text)
+		a = str(response.text)
+		#所有数据
+
+		All_list = a.split(",")
+
+		#now_price = All_list[3]
+		#取实时价格
 
 
-def Stock_sinajs(stockcode):
-	# urllib3.disable_warnings()
-
-	if int(stockcode[0]) > 3:
-		url = "http://hq.sinajs.cn/list=sh"+"%s"%stockcode
-	else:
-		url = "http://hq.sinajs.cn/list=sz"+"%s"%stockcode
-	requests.packages.urllib3.disable_warnings()
-	response = requests.get(url, verify=False)
-	#print("DonDaKe",response.text)
-	a = str(response.text)
-	#所有数据
-
-	All_list = a.split(",")
-
-	#now_price = All_list[3]
-	#取实时价格
+		return	All_list
 
 
-	return	All_list
+	def Stock_gtimg(stockcode):
 
+		if int(stockcode[0]) > 3:
+			url = "http://hq.sinajs.cn/list=sh"+"%s"%stockcode
+		else:
+			url = "http://hq.sinajs.cn/list=sz"+"%s"%stockcode
 
-def Stock_gtimg(stockcode):
+		requests.packages.urllib3.disable_warnings()
+		response = requests.get(url, verify=False)
 
-	if int(stockcode[0]) > 3:
-		url = "http://hq.sinajs.cn/list=sh"+"%s"%stockcode
-	else:
-		url = "http://hq.sinajs.cn/list=sz"+"%s"%stockcode
+		a = str(response.text)
 
-	requests.packages.urllib3.disable_warnings()
-	response = requests.get(url, verify=False)
+		All_list = a.split("~")
+		#print (customer_contact)
 
-	a = str(response.text)
+		#now_price = All_list[3]
 
-	All_list = a.split("~")
-	#print (customer_contact)
-
-	#now_price = All_list[3]
-
-	return All_list
+		return All_list
 
 
 
 
-def Stock_gtimg_HK(stockcode):
-	url = "http://qt.gtimg.cn/q=r_hk"+"%s"%stockcode
+	def Stock_gtimg_HK(stockcode):
+		url = "http://qt.gtimg.cn/q=r_hk"+"%s"%stockcode
 
-	requests.packages.urllib3.disable_warnings()
-	response = requests.get(url, verify=False)
+		requests.packages.urllib3.disable_warnings()
+		response = requests.get(url, verify=False)
 
-	a = str(response.text)
+		a = str(response.text)
 
-	All_list = a.split("~")
-	#print (customer_contact)
-	#print (All_list)
-	#now_price = All_list[3]
-	#print ("========================================")
-	return All_list
+		All_list = a.split("~")
+		#print (customer_contact)
+		#print (All_list)
+		#now_price = All_list[3]
+		#print ("========================================")
+		return All_list
 
 
 
