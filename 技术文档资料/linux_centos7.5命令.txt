@@ -23,6 +23,10 @@ service network restart
 
 显示当前路径：pwd
 
+linux log.txt 乱码，其实是被加密了
+解密码：IUHIUHUY&Toiwjdoiejwojefweuifhu
+decode log.txt
+粘贴解密码 
 
 
 lunix或者centos服务器下如何下载自己在github上面的项目代码

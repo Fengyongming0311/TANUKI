@@ -157,7 +157,7 @@ class PriceCompare:
 
 
 			else:                    #如果价格既不低于最低价也不高于最高价则什么也不做
-				#print (stockname + "..............." +"什么也没干")
+				#print (stockcode + "..............." +"什么也没干")
 				pass
 
 
@@ -173,14 +173,28 @@ class PriceCompare:
 
 
 if __name__ == '__main__':
+	sqlcontrol.sqlrecordlog("windows计划任务开始执行PriceCpmpare...")
+	#测试计划任务是否执行
 	#sqldata = PriceCompare.selectsql()
 	sqldata = sqlcontrol.selectsql()
 	#sqldata---所有股票代码数据
 	# print ("sqldata数据为",sqldata)
 	# print ("--------------sqldata结束-------------")
+	i = 1
 	while 1:
 		for stockdata in sqldata:
 			PriceCompare.Run_interface(stockdata)
+		print ("完成%s次代码执行"%i)
+		i += 1
 		time.sleep(60)
+	'''
+	#判断是否在交易时间
+	import Trading_Hours
+	intime = Trading_Hours.tradetime()
+	if intime:
+		print ("在交易时间")
+	else:
+		print("不在交易时间")
+	'''
 	#上  循环执行每条数据
 	#测试数据用PriceCompare.Run_interface(sqldata[15])

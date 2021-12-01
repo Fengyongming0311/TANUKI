@@ -1,0 +1,11 @@
+查询前10条数据：
+SELECT * from stockbase limit 10
+
+检索记录行 6-15
+SELECT * from stockbase LIMIT 5,10
+
+检索记录行 96-last. 
+SELECT * from stockbase  LIMIT 15,-1;
+
+group by stockname 以stockname字段进行排序
+select * from stockbase where  stockcode like "%0%"  group by stockname limit 10;

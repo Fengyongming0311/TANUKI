@@ -189,6 +189,4 @@ class sqlcontrol:
 
 
 
-#filename = "股票数据.xlsx"
-#ReadEcxecl(filename)
 
