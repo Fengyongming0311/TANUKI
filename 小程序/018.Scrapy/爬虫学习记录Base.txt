@@ -4,6 +4,9 @@ scrapy startproject Dondake
 CMD 启动项目
 scrapy crawl Dondake
 
+scrapy安装报错看下边
+https://cloud.tencent.com/developer/article/1418539
+
 
 
 cd C:\TANUKI\Little_Project\018.Scrapy\SunShine

@@ -12,6 +12,32 @@ Python dir() 函数
 # 'rb'　　'wb'　　'ab'　　'rb+'　　'wb+'　　'ab+'
 
 
+
+import json
+#jsondata = json.dumps(don)
+#将str转为json格式
+
+
+
+
+Python format 格式化函数
+#新增了一种格式化字符串的函数 str.format()，它增强了字符串格式化的功能。
+#基本语法是通过 {} 和 : 来代替以前的 % 。
+#format 函数可以接受不限个参数，位置可以不按顺序。
+"{} {}".format("hello", "world")    # 不设置指定位置，按默认顺序
+'hello world'
+
+"Employee('{}', '{}', '{}')".format(self.first, self.last, self.pay)
+
+
+判断是否为空
+if employees is None:
+	employees = []
+else:
+	self.employees = employees
+
+
+
 https://www.cnblogs.com/mq0036/p/7205626.html
 self.assertEqual('Action Bar', els[1].text)
 self.assertEqual(a,b,msg=msg)   #判断a与1.b是否一致，msg类似备注，可以为空

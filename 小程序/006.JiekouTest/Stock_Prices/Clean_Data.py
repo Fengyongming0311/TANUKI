@@ -4,7 +4,7 @@ from Base_StockInterface import Base_StockInterface
 import time
 
 class Clean_Data:
-
+	@staticmethod
 	def Clean_Data_sina(number):
 		everydata = Base_StockInterface.Stock_sinajs(number)
 		dict = {}
@@ -73,7 +73,7 @@ class Clean_Data:
 		print (date)
 		print (time)
 		"""
-
+	@staticmethod
 	def Clean_Data_gtimgHK(number):
 		alldata = Base_StockInterface.Stock_gtimg_HK(number)
 		dict = {}
@@ -142,3 +142,18 @@ class Clean_Data:
 		print (date)
 		print (time)
 		"""
+
+
+	@staticmethod
+	def fund_CleanData(fundcode):
+		import re
+		import json
+		don = Base_StockInterface.fund_1234567(fundcode)
+
+		# 正则表达式
+		pattern = r'^jsonpgz\((.*)\)'
+		# 查找结果
+		search = re.findall(pattern, don)
+		for i in search:
+			data = json.loads(i)
+			return data

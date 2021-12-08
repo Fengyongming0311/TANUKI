@@ -41,7 +41,7 @@ class PriceCompare:
 		#下，返回所有数据
 		return dondake
 
-
+	#股票价格比较
 	def Run_interface(data):
 		#data为第一次查询数据库的值，如果执行中数据库值有变的话需要重新取
 		stockcode = data[0]
@@ -189,6 +189,7 @@ if __name__ == '__main__':
 		time.sleep(60)
 	'''
 	#判断是否在交易时间
+	开始执行前判断时间是否交易时间，执行完一次后再判断一下是否出了交易时间 这个以后写
 	import Trading_Hours
 	intime = Trading_Hours.tradetime()
 	if intime:
