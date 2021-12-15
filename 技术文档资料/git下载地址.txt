@@ -1,1 +1,9 @@
 https://git-scm.com/download/win
+
+
+pycharm 中，放弃本地编辑代码，直接拉取线上最新版本：
+找到pycharm终端
+在终端中输入
+1、git fetch --all => 下载远程仓库最新内容，不做合并
+2、git reset --hard origin/master =>把hard指向master最新版本
+3、 git pull 拉取代码（可以省略）
