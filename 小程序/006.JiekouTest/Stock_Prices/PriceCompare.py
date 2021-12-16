@@ -186,7 +186,7 @@ if __name__ == '__main__':
 			PriceCompare.Run_interface(stockdata)
 		print ("完成%s次代码执行"%i)
 		i += 1
-		time.sleep(60)
+		time.sleep(80)
 	'''
 	#判断是否在交易时间
 	开始执行前判断时间是否交易时间，执行完一次后再判断一下是否出了交易时间 这个以后写
