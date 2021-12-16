@@ -15,6 +15,7 @@ Stock_Interface_HK    是第三个HK
 """
 
 class Base_StockInterface:
+	@staticmethod
 	def Stock_sinajs(stockcode):
 		# urllib3.disable_warnings()
 
@@ -36,7 +37,7 @@ class Base_StockInterface:
 
 		return	All_list
 
-
+	@staticmethod
 	def Stock_gtimg(stockcode):
 
 		if int(stockcode[0]) > 3:
@@ -58,7 +59,7 @@ class Base_StockInterface:
 
 
 
-
+	@staticmethod
 	def Stock_gtimg_HK(stockcode):
 		url = "http://qt.gtimg.cn/q=r_hk"+"%s"%stockcode
 
@@ -73,6 +74,18 @@ class Base_StockInterface:
 		#now_price = All_list[3]
 		#print ("========================================")
 		return All_list
+
+	@staticmethod
+	def fund_1234567(fundcode):
+		url = "https://fundgz.1234567.com.cn/js/%s.js"%fundcode
+
+		requests.packages.urllib3.disable_warnings()
+		response = requests.get(url, verify=False)
+
+		a = str(response.text)
+
+		return a
+
 
 
 
