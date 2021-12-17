@@ -4,6 +4,8 @@ selenium
 python打包工具：
 pip命令安装：pip install PyInstaller
 pip命令安装：pip install pywin32-ctypes
+Pip show xlrd
+显示 xlrd路径
 pymysql   mysql
 pip install --upgrade autopep8      代码规范的自动代码规范 ctrl + Alt + L 代码自动规范
 ==============================================================================================
