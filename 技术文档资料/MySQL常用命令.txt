@@ -9,3 +9,9 @@ SELECT * from stockbase  LIMIT 15,-1;
 
 group by stockname 以stockname字段进行排序
 select * from stockbase where  stockcode like "%0%"  group by stockname limit 10;
+
+
+
+
+删除数据库中某个字段的重复数据
+select fundcode（字段名） from loffundrisk（表名） group by  fundcode（字段名） having count(fundcode)（字段名） > 1
