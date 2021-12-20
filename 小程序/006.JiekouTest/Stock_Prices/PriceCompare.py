@@ -180,22 +180,23 @@ if __name__ == '__main__':
 	#sqldata---所有股票代码数据
 	# print ("sqldata数据为",sqldata)
 	# print ("--------------sqldata结束-------------")
+	#加个判断是否交易时间的开关
+	import Trading_Hours
+
 	i = 1
 	while 1:
-		for stockdata in sqldata:
-			PriceCompare.Run_interface(stockdata)
-		print ("完成%s次代码执行"%i)
-		i += 1
+		#判断是否交易时间
+		now = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+		tradetime = Trading_Hours.tradetime(now)   #如果是特殊交易日加上 ,tradeswitch = True
+
+		if tradetime == True:
+			for stockdata in sqldata:
+				PriceCompare.Run_interface(stockdata)
+			print ("完成%s次代码执行"%i)
+			i += 1
+		else:
+			print ("不是交易时间，什么都没有做...")
+			pass
 		time.sleep(80)
-	'''
-	#判断是否在交易时间
-	开始执行前判断时间是否交易时间，执行完一次后再判断一下是否出了交易时间 这个以后写
-	import Trading_Hours
-	intime = Trading_Hours.tradetime()
-	if intime:
-		print ("在交易时间")
-	else:
-		print("不在交易时间")
-	'''
 	#上  循环执行每条数据
 	#测试数据用PriceCompare.Run_interface(sqldata[15])
