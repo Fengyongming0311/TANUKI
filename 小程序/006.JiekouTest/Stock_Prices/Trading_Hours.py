@@ -59,7 +59,7 @@ def tradetime(now,tradeswitch = False):
 			am = intime("9:30","11:30")
 			pm = intime("13:00","15:00")
 			# 直接return am or pm
-			print ("date在周一到周五的范围内，做了intime的判断")
+			#print ("date在周一到周五的范围内，做了intime的判断")
 			return  am or pm
 		else:
 			#不在周一到周五时间内
